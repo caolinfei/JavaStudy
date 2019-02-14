@@ -15,6 +15,7 @@ public class Car {
 
     private int num;
 
+    public  int age;
     public class Engin {
 
         public void ShowName() {
