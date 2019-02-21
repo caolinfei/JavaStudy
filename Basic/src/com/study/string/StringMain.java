@@ -1,5 +1,7 @@
 package com.study.string;
 
+import java.util.Objects;
+
 public class StringMain {
     public static void main(String[] args) {
 
@@ -17,12 +19,39 @@ public class StringMain {
 //
 //        System.out.println(s2==s.intern());
 
-        String s3 = new String("bb");
-        s3=s3.intern();//这里必须重新赋值才行
-        String s4 = "bb";
+//        String s3 = new String("bb");
+//        s3=s3.intern();//这里必须重新赋值才行
+//        String s4 = "bb";
+//
+//        System.out.println(s3 == s4);
+//
+//        String s="asda";
+//        s+="213";
+//
+//        StringBuilder sb=new StringBuilder();
+//        sb.toString();
+//        //s.equals("123");
+//        String s1=new String("he")+new String("llo"); //第二句
+//        s1.intern();   //将 堆中新建的对象"hello" 存入字符串常量池
+//        String s2="hello";  //第三句
+//        System.out.println(s1==s2);//输出是true。
+//
+//        String s3=new String("hello");
+//        s3.intern();
+//        String s4="hello";
+//        System.out.println(s3==s4);//输出false
 
-        System.out.println(s3 == s4);
+        String s="aa"+"bb"+"cc"+"dd";//编译器会优化成 aabbccdd 不会常量池只有这个字符串
 
+        s+="ee";//调用build然后tostring
+        String s1 = new String("abc");
+        s1.intern();
 
+        //比较字符串的时候 如果空指针的时候 可以使用Objects
+        Objects.equals(null,null);//支持为null的判断 工具类
     }
+
+
+
+
 }
