@@ -1,17 +1,16 @@
 package com.study.collectionandGeneric;
 
-public class CustomClass {
+public class CustomMapClass {
 
+    private String name ;
 
-    public String name ;
-
-    public CustomClass(String name) {
+    public CustomMapClass(String name) {
         this.name = name;
     }
 
     @Override
     public int hashCode() {
-        return 1; //this.name.hashCode();
+        return 123;
     }
 
     @Override
