@@ -37,7 +37,11 @@ public class MapDic {
         System.out.println(put);
         //如果重新写了hashcode 和equals方法 比较的都是相同的 那么就会返回替换掉的值
         String put2 = customMapClassStringHashMap.put(new CustomMapClass("123"), "上海");
+        customMapClassStringHashMap.put(new CustomMapClass("123"), "天津");
         System.out.println(put2);
+        System.out.println(customMapClassStringHashMap);
+
+
 
     }
 }
