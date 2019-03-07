@@ -6,6 +6,7 @@ public class Main {
 
         Main.Demo d=new Main().new Demo();
 
+
     }
 
     public class Demo implements  Comparable<Demo>
