@@ -9,6 +9,11 @@ public class CustomMapClass {
     }
 
     @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    @Override
     public int hashCode() {
         return 123;
     }
@@ -18,8 +23,5 @@ public class CustomMapClass {
         return this.name;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        return this.hashCode()==obj.hashCode();
-    }
+
 }

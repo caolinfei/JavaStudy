@@ -1,5 +1,6 @@
 package com.study.string;
 
+import javax.sound.midi.Soundbank;
 import java.util.Objects;
 
 public class StringMain {
@@ -41,17 +42,22 @@ public class StringMain {
 //        String s4="hello";
 //        System.out.println(s3==s4);//输出false
 
-        String s="aa"+"bb"+"cc"+"dd";//编译器会优化成 aabbccdd 不会常量池只有这个字符串
+//        String s="aa"+"bb"+"cc"+"dd";//编译器会优化成 aabbccdd 不会常量池只有这个字符串
+//
+//        s+="ee";//调用build然后tostring
+//        String s1 = new String("abc");
+//        s1.intern();
+//
+//        //比较字符串的时候 如果空指针的时候 可以使用Objects
+//        Objects.equals(null,null);//支持为null的判断 工具类
 
-        s+="ee";//调用build然后tostring
-        String s1 = new String("abc");
-        s1.intern();
+        char[] c = new char[]{'h', 'e', 'l', 'l', 'o'};
+        String s = new String(c);// this.value = Arrays.copyOf(value, value.length);
+        c[0]='s';
+        System.out.println(s);//hello
 
-        //比较字符串的时候 如果空指针的时候 可以使用Objects
-        Objects.equals(null,null);//支持为null的判断 工具类
+
     }
-
-
 
 
 }
