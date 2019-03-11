@@ -45,7 +45,7 @@ public class DateMain {
 
         System.out.println(calendar.getFirstDayOfWeek()); ;
         calendar.add(Calendar.DAY_OF_WEEK,6);
-        System.out.println(calendar.getTime());;
+        System.out.println(calendar.getTime());
 
         //SimpleDateFormat
         //1非线程安全
