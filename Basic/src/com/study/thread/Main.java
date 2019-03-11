@@ -91,11 +91,12 @@ public class Main {
         t2.start();
         t3.start();*/
         //线程加入
-            //Join
+        //Join
         //Yide礼让线程
 
+
         //设置线程优先级  匿名内部类的方式实现
-        Thread t1=new Thread(){
+        Thread t1 = new Thread() {
             @Override
             public void run() {
                 super.run();
@@ -105,10 +106,11 @@ public class Main {
     }
 }
 
-class Super
-{
-    public void  say()
-    {
+class Super {
+    /**
+     *
+     */
+    public void say() {
         System.out.println("hello");
     }
 }
