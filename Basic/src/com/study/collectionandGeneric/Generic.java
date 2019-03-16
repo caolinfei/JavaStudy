@@ -1,6 +1,8 @@
 package com.study.collectionandGeneric;
 
-public class Generic {
+import javax.management.Query;
+
+public class Generic<Entity> {
 
     public static void main(String[] args) {
 
@@ -8,12 +10,10 @@ public class Generic {
         genericClass.setModel("123");
         genericClass.Show("e");
         genericClass.Show();
-        ShowGeneric(123);
-    }
-    //generic method
 
-    public static  <E> void  ShowGeneric(E e)
-    {
-        System.out.println(e);
     }
+
+
+
 }
+
