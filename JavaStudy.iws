@@ -16,8 +16,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c865c55f-5612-4837-912d-d4c0c0e212d3" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/Test/Test.iml" />
-      <change beforePath="$PROJECT_DIR$/JavaStudy.ipr" afterPath="$PROJECT_DIR$/JavaStudy.ipr" />
       <change beforePath="$PROJECT_DIR$/JavaStudy.iws" afterPath="$PROJECT_DIR$/JavaStudy.iws" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -388,7 +386,7 @@
       <workItem from="1552720151574" duration="748000" />
       <workItem from="1552721419174" duration="11000" />
       <workItem from="1552721933717" duration="2137000" />
-      <workItem from="1552790081820" duration="600000" />
+      <workItem from="1552790081820" duration="612000" />
     </task>
     <task id="LOCAL-00001" summary="#fix thread">
       <created>1552230462607</created>
@@ -418,7 +416,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552720393077</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="#test jdbc">
+      <created>1552823488225</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1552823488225</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -433,7 +438,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28293000" />
+    <option name="totallyTimeSpent" value="28305000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
