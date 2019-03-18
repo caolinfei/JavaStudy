@@ -48,12 +48,15 @@ public class JDBCUntil {
 
     }
 
+
     /**
      *
      * 获取数据库连接字符串
      * @return a sql connection
      * @throws SQLException
      */
+
+
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(url, user, password);
     }
