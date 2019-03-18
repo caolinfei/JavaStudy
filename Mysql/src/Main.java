@@ -1,12 +1,25 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import com.study.until.JDBCUntil;
+
+import java.sql.*;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Main {
+    /**
+     * 1) DDL(Data Definition Language)数据定义语言
+     * 用来定义数据库对象：数据库，表，列等。关键字：create, drop,alter 等
+     * 2) DML(Data Manipulation Language)数据操作语言
+     * 用来对数据库中表的数据进行增删改。关键字：insert, delete, update 等
+     * 3) DQL(Data Query Language)数据查询语言
+     * 用来查询数据库中表的记录(数据)。关键字：select, where 等
+     * 4) DCL(Data Control Language)数据控制语言(了解)
+     * 用来定义数据库的访问权限和安全级别，及创建用户。关键字：GRANT， REVOKE 等
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
-        try {
+       /* try {
 
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/db3", "root", "root");
@@ -20,6 +33,29 @@ public class Main {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+        }*/
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            connection = JDBCUntil.getConnection();
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("select * from  student");
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                int age = resultSet.getInt("age");
+
+                Timestamp time = resultSet.getTimestamp("date");
+
+                long id = resultSet.getLong("id");
+                System.out.println("name=" + name + "age=" + age + "date" + time.toString() + "id" + id);
+            }
+            System.out.println(resultSet.toString());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            JDBCUntil.Dispose(resultSet, connection, statement);
         }
+
     }
 }
