@@ -9,9 +9,12 @@ public class Main {
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306","root", "root");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/db3", "root", "root");
             Statement statement = connection.createStatement();
-            statement.executeUpdate("update student set amount =100 where id=1");
+            int i = statement.executeUpdate("update student set amount =100 where id=1");
+            if (i > 0) {
+                System.out.println("更新 成功");
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
