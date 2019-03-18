@@ -10,6 +10,15 @@ public class Student {
     private Date date;
     private BigDecimal amoutn;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id ;
     public String getName() {
         return name;
     }
@@ -49,6 +58,8 @@ public class Student {
                 ", age=" + age +
                 ", date=" + date +
                 ", amoutn=" + amoutn +
+                ", id=" + id +
                 '}';
     }
 }
+
