@@ -51,7 +51,7 @@ public class Student {
         this.amoutn = amoutn;
     }
 
-    @Override
+   /* @Override
     public String toString() {
         return "Student{" +
                 "name='" + name + '\'' +
@@ -60,6 +60,6 @@ public class Student {
                 ", amoutn=" + amoutn +
                 ", id=" + id +
                 '}';
-    }
+    }*/
 }
 
