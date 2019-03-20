@@ -22,9 +22,9 @@ public class Main {
      */
     public static void main(String[] args) {
 
-       /* try {
+        try {
 
-            Class.forName("com.mysql.jdbc.Driver");
+           // Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/db3", "root", "root");
             Statement statement = connection.createStatement();
             int i = statement.executeUpdate("update student set amount =100 where id=1");
@@ -34,10 +34,8 @@ public class Main {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }*/
-        /*List<Student> list = new ArrayList<>();
+        }
+        List<Student> list = new ArrayList<>();
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
@@ -65,9 +63,9 @@ public class Main {
             e.printStackTrace();
         } finally {
             JDBCUntil.Dispose(resultSet, connection, statement);
-        }*/
+        }
 
-        insterObject();
+       // insterObject();
 
     }
 
@@ -82,7 +80,7 @@ public class Main {
             //参数化查询
            //statement.executeUpdate("INSERT INTO student VALUES (?,?,?,NULL ");
             PreparedStatement p= connection.prepareStatement("INSERT INTO student VALUES (?,?,?,NULL )");
-            p.setString(1, "慕容小仙");
+            p.setString(1, "慕容小仙ss");
             p.setInt(2, 18);
             p.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
            if(p.executeUpdate()>0)

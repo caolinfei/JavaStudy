@@ -1,9 +1,11 @@
 package com.study.test;
 
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import com.study.entity.Student;
 import com.study.until.JDBCUntil;
 import org.junit.Test;
 
+import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
@@ -70,5 +72,10 @@ public class MysqlCRUDTest {
         } catch (InstantiationException e) {
             e.printStackTrace();
         }
+    }
+
+    public void TestMysqlPool()
+    {
+        DataSource ds=new MysqlDataSource();
     }
 }

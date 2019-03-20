@@ -37,9 +37,7 @@ public class JDBCUntil {
             user = properties.getProperty("user");
             password = properties.getProperty("password");
             driver = properties.getProperty("driver");
-            Class.forName(driver);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+           // Class.forName(driver);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
