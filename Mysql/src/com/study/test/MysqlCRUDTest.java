@@ -55,4 +55,20 @@ public class MysqlCRUDTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void Test1(){
+        try {
+           // Class.forName("com.study.test.TestClassForName");
+            Object o = Class.forName("com.study.test.TestClassForName").newInstance();
+            System.out.println(o.toString());
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }
+    }
 }

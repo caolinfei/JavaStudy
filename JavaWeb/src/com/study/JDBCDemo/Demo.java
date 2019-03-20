@@ -9,7 +9,7 @@ public class Demo {
                         "root", "root");
 
         String sql="UPDATE test SET  name='曹麟飞' WHERE Id=1";
-        Statement stm=connection.createStatement();
+        Statement stm=connectDriverManagerion.createStatement();
         int i = stm.executeUpdate(sql);
         System.out.println(i);*/
 

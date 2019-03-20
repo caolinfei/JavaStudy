@@ -13,13 +13,13 @@ import java.util.Properties;
  *
  * druid连接池
  */
-public class Druid {
+public class DruidDemo {
 
     public static void main(String[] args) {
         Properties p=new Properties();
         try {
 
-            InputStream is = Druid.class.getClassLoader().getResourceAsStream("com/study/jdbcConnectionPool/druid.properties");
+            InputStream is = DruidDemo.class.getClassLoader().getResourceAsStream("com/study/jdbcConnectionPool/druid.properties");
             p.load(is);
         } catch (IOException e) {
             e.printStackTrace();
