@@ -47,7 +47,7 @@ public class MysqlCRUDTest {
                 s.setName(result.getString("name"));
                 s.setAge(result.getInt("age"));
                 s.setDate(result.getTimestamp("date"));
-                s.setAmoutn(result.getBigDecimal("amount"));
+                //s.setAmoutn(result.getBigDecimal("amount"));
                 s.setId(result.getInt("id"));
                 students.add(s);
 

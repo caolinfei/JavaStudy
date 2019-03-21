@@ -8,8 +8,8 @@ public class Student {
     private String name;
     private int age;
     private Date date;
-    private BigDecimal amoutn;
-
+    private double amount;
+    private int id ;
     public int getId() {
         return id;
     }
@@ -18,7 +18,7 @@ public class Student {
         this.id = id;
     }
 
-    private int id ;
+
     public String getName() {
         return name;
     }
@@ -43,23 +43,23 @@ public class Student {
         this.date = date;
     }
 
-    public BigDecimal getAmoutn() {
-        return amoutn;
+    public double getAmount() {
+        return amount;
     }
 
-    public void setAmoutn(BigDecimal amoutn) {
-        this.amoutn = amoutn;
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
-   /* @Override
+    @Override
     public String toString() {
         return "Student{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", date=" + date +
-                ", amoutn=" + amoutn +
+                ", amount=" + amount +
                 ", id=" + id +
-                '}';
-    }*/
+                '}'+"\n";
+    }
 }
 
