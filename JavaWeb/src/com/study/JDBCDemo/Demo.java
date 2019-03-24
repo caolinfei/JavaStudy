@@ -30,10 +30,5 @@ public class Demo {
 
     }
 }
-class Test<T>
-{
-    public void  say(T model)
-    {
-        System.out.println(model.getClass());
-    }
-}
+
+
