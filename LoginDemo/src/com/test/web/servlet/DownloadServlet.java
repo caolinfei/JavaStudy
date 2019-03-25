@@ -14,7 +14,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.stream.Stream;
 
-@WebServlet( "/downloadServlet")
+@WebServlet("/downloadServlet")
 public class DownloadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //1.获取请求参数，文件名称
@@ -68,7 +68,7 @@ public class DownloadServlet extends HttpServlet {
         //3.设置response的响应头
         //3.1设置响应头类型：content-type
         String mimeType = servletContext.getMimeType(filename);//获取文件的mime类型
-        response.setHeader("content-type",mimeType);
+        response.setHeader("content-type", mimeType);
         //3.2设置响应头打开方式:content-disposition
 
         //解决中文文件名问题
@@ -76,18 +76,17 @@ public class DownloadServlet extends HttpServlet {
         String agent = request.getHeader("user-agent");
         //2.使用工具类方法编码文件名即可
         filename = DownLoadUtils.getFileName(agent, filename);
-            //在Chrome不生效
-        response.setHeader("content-disposition","attachment;filename="+filename);
+        //在Chrome不生效
+        response.setHeader("content-disposition", "attachment;filename=" + filename);
         //4.将输入流的数据写出到输出流中
         ServletOutputStream sos = response.getOutputStream();
         byte[] buff = new byte[1024 * 8];
         int len = 0;
-        while((len = fis.read(buff)) != -1){
-            sos.write(buff,0,len);
+        while ((len = fis.read(buff)) != -1) {
+            sos.write(buff, 0, len);
         }
 
         fis.close();
-
 
 
     }
