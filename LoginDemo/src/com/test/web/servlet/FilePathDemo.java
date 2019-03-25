@@ -18,9 +18,13 @@ public class FilePathDemo extends HttpServlet {
 
 
         ServletContext servletContext = request.getServletContext();
+        System.out.println(servletContext);
         String realPath = servletContext.getRealPath("/WEB-INF/classes/a.txt");
 
+        String path = FilePathDemo.class.getClassLoader().getResource("/a.txt").getPath();
         System.out.println(realPath);
+
+        System.out.println(path);
 
     }
 }
