@@ -23,12 +23,12 @@ public class Login extends HttpServlet {
 
 
         request.setCharacterEncoding("utf-8");
-        System.out.println("登录了");
-        UserDao dao=new UserDao();
-        //User user = dao.getUser(request.getParameter("userName"), request.getParameter("pwd"));
-        User user=new User();
-        Map<String, String[]> parameterMap = request.getParameterMap();
-        try {
+            System.out.println("登录了");
+            UserDao dao=new UserDao();
+            //User user = dao.getUser(request.getParameter("userName"), request.getParameter("pwd"));
+            User user=new User();
+            Map<String, String[]> parameterMap = request.getParameterMap();
+            try {
             BeanUtils.populate(user,parameterMap);
         } catch (IllegalAccessException e) {
             e.printStackTrace();
