@@ -2,7 +2,9 @@ package com.crud.service;
 
 import com.crud.dao.PersonDao;
 import com.crud.dao.PersonDaoImpl;
+import com.crud.dao.QueryResult;
 import com.crud.domian.Person;
+import com.crud.domian.PersonQuery;
 
 import java.util.List;
 
@@ -33,5 +35,10 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public List<Person> getListForPage() {
         return null;
+    }
+
+    @Override
+    public QueryResult<Person> queryResult(PersonQuery query) {
+       return dao.queryResult(query);
     }
 }

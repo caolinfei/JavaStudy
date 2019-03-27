@@ -30,10 +30,64 @@
         td, th {
             text-align: center;
         }
+        .row-grid {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
 <div class="container">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="row row-grid">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon title">代理商手机号</span>
+                        <input type="text" class="form-control" name="Mobile" value=""/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon title">代理商手机号</span>
+                        <input type="text" class="form-control" name="Mobile" value=""/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon title">代理商手机号</span>
+                        <input type="text" class="form-control" name="Mobile" value=""/>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-grid">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon title">代理商手机号</span>
+                        <input type="text" class="form-control" name="Mobile" value=""/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon title">代理商手机号</span>
+                        <input type="text" class="form-control" name="Mobile" value=""/>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon title">代理商手机号</span>
+                        <input type="text" class="form-control" name="Mobile" value=""/>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-grid">
+                <div class="col-md-4">
+
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddAgent" onclick="">搜索</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <table border="1" class="table table-bordered table-hover">
         <tr class="success">

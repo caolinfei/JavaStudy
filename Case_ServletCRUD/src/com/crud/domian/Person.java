@@ -7,7 +7,7 @@ public class Person extends BaseEntity{
     private int age;
     private String address;
     private String qq;
-
+    private String email;
     public String getName() {
         return name;
     }
@@ -56,5 +56,5 @@ public class Person extends BaseEntity{
         this.email = email;
     }
 
-    private String email;
+
 }

@@ -59,15 +59,17 @@ public class PersonDaoImpl implements PersonDao {
         sql.append(" FROM tb_person");
         sql.append(" where 1=1 ");
 
+        StringBuilder countSql=new StringBuilder(" SELECT count(*) from tb_person where 1=1 ");
 
         if(query.getName()!=null&&!"".equals(query))
         {
             sql.append("AND name = ? ");
+            countSql.append(" AND name = ?");
             par.add(query.getName());
         }
         List<Person> query1 = template.query(sql.toString(), new BeanPropertyRowMapper<Person>(Person.class), par.toArray());
         result.setList(query1);
-        Integer integer = template.queryForObject("select count(*) from tb_person", Integer.class);
+        Integer integer = template.queryForObject(countSql.toString(), Integer.class,par.toArray());
         result.setCout(integer);
         return result;
     }

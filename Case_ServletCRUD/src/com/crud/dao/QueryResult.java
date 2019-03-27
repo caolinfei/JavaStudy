@@ -4,7 +4,7 @@ import com.crud.domian.BaseEntity;
 
 import java.util.List;
 
-public class QueryResult<TEntity extends BaseEntity> {
+public class QueryResult<TEntity> {
 
     private List<TEntity> list;
 

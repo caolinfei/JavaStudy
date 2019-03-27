@@ -1,24 +1,62 @@
 package com.crud.domian;
 
-import java.util.ArrayList;
+import com.crud.dao.QueryResult;
 
-public class PageBean<TEntiry extends ArrayList<BaseEntity>,TQuery extends  BaseQuery> {
+import java.util.List;
+
+public class PageBean<TEntity> {
     private int totalPage;
-    private boolean hasNexPage;
-    private  boolean hasPrePage;
-    private int curruentPage;
-    private int nexPage;
-    private int perPage;
 
-    public BaseQuery getQuery() {
-        return query;
+    public boolean isHasNexPage() {
+        return hasNexPage;
+    }
+
+    public boolean isHasPrePage() {
+        return hasPrePage;
     }
 
     public void setQuery(BaseQuery query) {
         this.query = query;
     }
 
+    public void setResult(QueryResult<TEntity> result) {
+        this.result = result;
+    }
+
+    public PageBean(List<TEntity> result, int totalCount, Integer skip, Integer take){
+
+
+    }
+
+
+    private boolean hasNexPage;
+    private boolean hasPrePage;
+    private int currentPage;
+    private int nexPage;
+    private int perPage;
+    private int totalCount;
     private BaseQuery query;
+    private QueryResult<TEntity> result;
+
+    public QueryResult<TEntity> getResult() {
+        return result;
+    }
+
+
+
+    public PageBean(QueryResult<TEntity> result, BaseQuery query) {
+        this(result.getList(),result.getCout(),query.getTake(),query.getSkip());
+        this.query = query;
+        this.result=result;
+
+    }
+
+    public BaseQuery getQuery() {
+        return query;
+    }
+
+
+
 
     public int getTotalPage() {
         return totalPage;
@@ -29,8 +67,7 @@ public class PageBean<TEntiry extends ArrayList<BaseEntity>,TQuery extends  Base
     }
 
     public boolean hasNexPage() {
-        if(this.curruentPage==totalPage)
-        {
+        if (this.currentPage == totalPage) {
             return false;
         }
         return true;
@@ -48,12 +85,12 @@ public class PageBean<TEntiry extends ArrayList<BaseEntity>,TQuery extends  Base
         this.hasPrePage = hasPrePage;
     }
 
-    public int getCurruentPage() {
-        return curruentPage;
+    public int getCurrentPage() {
+        return currentPage;
     }
 
-    public void setCurruentPage(int curruentPage) {
-        this.curruentPage = curruentPage;
+    public void setCurrentPage(int currentPage) {
+        this.currentPage = currentPage;
     }
 
     public int getNexPage() {
@@ -80,6 +117,6 @@ public class PageBean<TEntiry extends ArrayList<BaseEntity>,TQuery extends  Base
         this.totalCount = totalCount;
     }
 
-    private  int totalCount;
+
 
 }
