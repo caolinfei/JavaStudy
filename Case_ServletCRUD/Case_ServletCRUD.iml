@@ -40,6 +40,5 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Tomcat 8.5.11" level="application_server_libraries" />
   </component>
 </module>
