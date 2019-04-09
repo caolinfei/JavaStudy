@@ -20,7 +20,7 @@ public class MyBatisTest {
         SqlSessionFactory build = builder.build(resourceAsStream);
         SqlSession sqlSession = build.openSession();
         IUserDao iUserDao = sqlSession.getMapper(IUserDao.class);
-        List<User> all = iUserDao.findAll()
+        List<User> all = iUserDao.findAll();
         System.out.println(all);
 
 
