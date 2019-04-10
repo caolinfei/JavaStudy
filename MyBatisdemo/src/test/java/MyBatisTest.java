@@ -19,9 +19,10 @@ public class MyBatisTest {
         SqlSessionFactoryBuilder builder=new SqlSessionFactoryBuilder();
         SqlSessionFactory build = builder.build(resourceAsStream);
         SqlSession sqlSession = build.openSession();
-        IUserDao iUserDao = sqlSession.getMapper(IUserDao.class);
-        List<User> all = iUserDao.findAll();
-        System.out.println(all);
+        List<Object> objects = sqlSession.selectList("com.study.dao.IUserDao.findAll");
+//        IUserDao iUserDao = sqlSession.getMapper(IUserDao.class);
+//        List<User> all = iUserDao.findAll();
+//        System.out.println(all);
 
 
 

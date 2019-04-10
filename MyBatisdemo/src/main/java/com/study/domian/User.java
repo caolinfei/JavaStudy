@@ -8,6 +8,16 @@ public class User implements Serializable {
     private String password;
     private String brithDate;
 
+    public String getHello() {
+        return hello;
+    }
+
+    public void setHello(String hello) {
+        this.hello = hello;
+    }
+
+    private String hello;
+
     public String getUserName() {
         return userName;
     }
