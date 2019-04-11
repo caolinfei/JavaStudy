@@ -1,6 +1,5 @@
 
-import com.study.dao.IUserDao;
-import com.study.domian.User;
+import com.study.date.DateMain;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -23,6 +22,7 @@ public class MyBatisTest {
 //        IUserDao iUserDao = sqlSession.getMapper(IUserDao.class);
 //        List<User> all = iUserDao.findAll();
 //        System.out.println(all);
+
 
 
 
