@@ -1,0 +1,29 @@
+package com.mybatis.test;
+
+import com.mybatis.sqlSession.SqlSession;
+import com.mybatis.sqlSession.SqlSessionFactory;
+import com.mybatis.sqlSession.SqlSessionFactoryBuilder;
+import com.mybatis.untils.Resources;
+import com.service.dao.IUserDao;
+import com.service.domain.User;
+import org.junit.Test;
+
+import java.io.InputStream;
+import java.util.List;
+
+public class CustomTest {
+
+    @Test
+    public void coustomMyBatisTest() {
+        InputStream resourceAsStream = Resources.getResourceAsStream("SqlMapConfig.xml");
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+        SqlSessionFactory build = builder.build(resourceAsStream);
+        SqlSession sqlSession = build.openSession();
+        IUserDao mapper = sqlSession.getMapper(IUserDao.class);
+        List<User> all = mapper.findAll();
+
+        System.out.println(all);
+
+
+    }
+}

@@ -1,5 +1,7 @@
 
+import com.study.dao.IUserDao;
 import com.study.date.DateMain;
+import com.study.domian.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -19,9 +21,9 @@ public class MyBatisTest {
         SqlSessionFactory build = builder.build(resourceAsStream);
         SqlSession sqlSession = build.openSession();
         List<Object> objects = sqlSession.selectList("com.study.dao.IUserDao.findAll");
-//        IUserDao iUserDao = sqlSession.getMapper(IUserDao.class);
-//        List<User> all = iUserDao.findAll();
-//        System.out.println(all);
+        IUserDao iUserDao = sqlSession.getMapper(IUserDao.class);
+        List<User> all = iUserDao.findAll();
+        System.out.println(all);
 
 
 

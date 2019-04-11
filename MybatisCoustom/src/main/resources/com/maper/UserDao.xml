@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--自定义的不使用xml约束
+<!DOCTYPE mapper-->
+        <!--PUBLIC "-//mybatis.org//DTD MapperProxy 3.0//EN"-->
+        <!--"http://mybatis.org/dtd/mybatis-3-mapper.dtd">-->
+<mapper namespace="com.service.dao.IUserDao">
+    <!--配置查询所有-->
+    <select id="findAll" resultType="com.service.domain.User">
+        select * from tb_user
+    </select>
+</mapper>
