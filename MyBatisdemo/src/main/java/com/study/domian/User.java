@@ -1,38 +1,16 @@
 package com.study.domian;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class User implements Serializable {
 
-    private String userName;
-    private String password;
-    private String brithDate;
-
-    public String getHello() {
-        return hello;
+    public String getUsername() {
+        return username;
     }
 
-    public void setHello(String hello) {
-        this.hello = hello;
-    }
-
-    private String hello;
-
-    public String getUserName() {
-        return userName;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userName='" + userName + '\'' +
-                ", password='" + password + '\'' +
-                ", brithDate='" + brithDate + '\'' +
-                '}';
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -43,11 +21,37 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String getBrithDate() {
+    public Date getBrithDate() {
         return brithDate;
     }
 
-    public void setBrithDate(String brithDate) {
+    public void setBrithDate(Date brithDate) {
         this.brithDate = brithDate;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", brithDate=" + brithDate +
+                ", id=" + id +
+                '}';
+    }
+
+    private String username;
+    private String password;
+    private Date brithDate;
+    private Integer id;
+
+
+
 }

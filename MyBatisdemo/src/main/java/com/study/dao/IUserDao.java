@@ -11,4 +11,14 @@ public interface IUserDao {
      * @return 用户列表
      */
     List<User> findAll();
+
+    User findById(Integer id);
+
+    int insert(User user);
+
+    void  deleteById(Integer id);
+
+    void updateById(User user);
+
+    int selectCount();
 }
