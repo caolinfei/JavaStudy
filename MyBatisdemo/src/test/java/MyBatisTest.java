@@ -72,13 +72,15 @@ public class MyBatisTest {
     }
     @Test
     public void SelectCount(){
-        int i = iUserDao.selectCount();
-        System.out.println(i);
+//        int i = iUserDao.selectCount();
+//        System.out.println(i);
+
     }
     @After
     public void destory() {
         sqlSession.commit();
         sqlSession.close();
     }
+
 
 }
