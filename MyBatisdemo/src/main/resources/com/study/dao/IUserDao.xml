@@ -2,23 +2,24 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.study.dao.IUserDao">
+
     <!-- 配置查询所有操作 -->
-    <select id="findAll" resultType="com.study.domian.User">
+    <select id="findAll" resultType="User">
         select * from tb_user
     </select>
-    <select id="findById" resultType="com.study.domian.User" parameterType="int">
+    <select id="findById" resultType="User" parameterType="int">
         SELECT  *FROM  tb_user where id =#{id}
     </select>
-
     <!--没有配置 type默认推断类型-->
-    <insert id="insert" parameterType="com.study.domian.User" >
+    <insert id="insert" parameterType="User" >
         <selectKey keyColumn="id" keyProperty="id" resultType="integer">
             SELECT LAST_INSERT_ID();
         </selectKey>
         INSERT INTO tb_user (username,password,brithDate) VALUES(#{username},#{password},#{brithDate})
     </insert>
-    <update id="updateById" parameterType="com.study.domian.User">
+    <update id="updateById" parameterType="User">
         UPDATE  tb_user set username=#{username} where id=#{id}
     </update>
     <delete id="deleteById" parameterType="integer">
@@ -26,5 +27,15 @@
     </delete>
     <select id="selectCount" resultType="integer">
         SELECT  COUNT(1) FROM  tb_user;
+    </select>
+    <select id="findByName" resultType="User" parameterType="string">
+        SELECT * FROM  tb_user where username=#{name};
+    </select>
+
+
+  <!--  SELECT * FROM  tb_user where username=#{user.UserName};如果数据库字段设置为不区分大小写可以使用BINARY强制区分大小写-->
+    <select id="selectByQuery" resultType="User" parameterType="userQuery">
+
+        SELECT * FROM  tb_user  where  BINARY username=#{user.UserName};
     </select>
 </mapper>

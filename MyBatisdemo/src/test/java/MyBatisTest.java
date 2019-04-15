@@ -2,6 +2,7 @@
 import com.study.dao.IUserDao;
 import com.study.date.DateMain;
 import com.study.domian.User;
+import com.study.domian.UserQuery;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -49,26 +50,34 @@ public class MyBatisTest {
     @Test
     public void insert() {
 
-        User u = new User();
-        u.setUsername("testMybatisss");
-        u.setPassword("123");
-        u.setBrithDate(Calendar.getInstance().getTime());
-        System.out.println(u);
-        int insert = iUserDao.insert(u);
-        System.out.println(u);
+//        User u = new User();
+//        u.setUsername("testMybatisss");
+//        u.setPassword("123");
+//        u.setBrithDate(Calendar.getInstance().getTime());
+//        System.out.println(u);
+//        int insert = iUserDao.insert(u);
+//        System.out.println(u);
 
     }
 
     @Test
     public void update() {
-        User user = iUserDao.findById(3);
-        user.setUsername("update");
-        iUserDao.updateById(user);
+//        User user = iUserDao.findById(3);
+//        user.setUsername("update");
+//        iUserDao.updateById(user);
     }
 
     @Test
     public void delete() {
         iUserDao.deleteById(1);
+    }
+
+    @Test
+    public void  findByName(){
+
+        //这里设置排序规则 可以避免大小写问题
+        User user = iUserDao.findByName("Update");
+        System.out.println(user);
     }
     @Test
     public void SelectCount(){
@@ -76,6 +85,19 @@ public class MyBatisTest {
 //        System.out.println(i);
 
     }
+
+    @Test
+    public void  SelectByQuery(){
+
+        UserQuery query=new UserQuery();
+        User user=new User();
+        user.setUserName("update");
+        query.setUser(user);
+        List<User> users = iUserDao.selectByQuery(query);
+        System.out.println(users);
+
+    }
+
     @After
     public void destory() {
         sqlSession.commit();

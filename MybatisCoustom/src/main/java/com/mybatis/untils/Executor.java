@@ -47,7 +47,9 @@ public class Executor {
                     //根据得到列名，获取每列的值
                     Object columnValue = rs.getObject(columnName);
                     //给obj赋值：使用Java内省机制（借助PropertyDescriptor实现属性的封装）
-                    PropertyDescriptor pd = new PropertyDescriptor(columnName,domainClass);//要求：实体类的属性和数据库表的列名保持一种
+                    //要求：实体类的属性和数据库表的列名保持一种 且个数要一致
+                    PropertyDescriptor pd = new PropertyDescriptor(columnName,domainClass);
+
                     //获取它的写入方法
                     Method writeMethod = pd.getWriteMethod();
                     //把获取的列的值，给对象赋值

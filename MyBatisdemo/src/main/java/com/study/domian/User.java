@@ -5,12 +5,14 @@ import java.util.Date;
 
 public class User implements Serializable {
 
-    public String getUsername() {
-        return username;
-    }
+    @Override
+    public String toString() {
+        return "User{" +
+                "UserName='" + UserName + '\'' +
+                ", password='" + password + '\'' +
+                ", brithDate=" + brithDate +
 
-    public void setUsername(String username) {
-        this.username = username;
+                '}';
     }
 
     public String getPassword() {
@@ -29,6 +31,20 @@ public class User implements Serializable {
         this.brithDate = brithDate;
     }
 
+    private String UserName;
+    private String password;
+    private Date brithDate;
+
+    private Integer id;
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String userName) {
+        UserName = userName;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -36,22 +52,5 @@ public class User implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", brithDate=" + brithDate +
-                ", id=" + id +
-                '}';
-    }
-
-    private String username;
-    private String password;
-    private Date brithDate;
-    private Integer id;
-
-
 }
 
