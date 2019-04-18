@@ -11,7 +11,7 @@ public class User implements Serializable {
                 "UserName='" + UserName + '\'' +
                 ", password='" + password + '\'' +
                 ", brithDate=" + brithDate +
-
+                ", uid=" + uid +
                 '}';
     }
 
@@ -35,7 +35,7 @@ public class User implements Serializable {
     private String password;
     private Date brithDate;
 
-    private Integer id;
+    //private Integer id;
 
     public String getUserName() {
         return UserName;
@@ -45,12 +45,21 @@ public class User implements Serializable {
         UserName = userName;
     }
 
-    public Integer getId() {
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
+    }
+
+    private Integer uid;
+   /* public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
+    }*/
 }
 

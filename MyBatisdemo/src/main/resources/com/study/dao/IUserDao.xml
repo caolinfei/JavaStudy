@@ -5,11 +5,14 @@
 
 <mapper namespace="com.study.dao.IUserDao">
 
+    <resultMap id="userMap" type="com.study.domian.User">
+        <id column="id" property="uid"></id>
+    </resultMap>
     <!-- 配置查询所有操作 -->
-    <select id="findAll" resultType="User">
+    <select id="findAll" resultMap="userMap">
         select * from tb_user
     </select>
-    <select id="findById" resultType="User" parameterType="int">
+    <select id="findById" resultMap="userMap" parameterType="int">
         SELECT  *FROM  tb_user where id =#{id}
     </select>
     <!--没有配置 type默认推断类型-->
@@ -34,8 +37,22 @@
 
 
   <!--  SELECT * FROM  tb_user where username=#{user.UserName};如果数据库字段设置为不区分大小写可以使用BINARY强制区分大小写-->
-    <select id="selectByQuery" resultType="User" parameterType="userQuery">
+    <sql id="defaultSelectSql">
+       SELECT * FROM  tb_user
+    </sql>
+    <select id="selectByQuery" resultMap="userMap" parameterType="userQuery">
+      <include refid="defaultSelectSql"></include>
+    <where>
+       <if test="name!=null and name!=''">
+          AND  username=#{name}
+       </if>
+        <if test="ids!=null and ids.size()>0">
+            AND
+            <foreach collection="ids" open="id in (" close=")" item="id" separator=",">
+               #{id}
+            </foreach>
+        </if>
+    </where>
 
-        SELECT * FROM  tb_user  where  BINARY username=#{user.UserName};
     </select>
 </mapper>

@@ -13,6 +13,7 @@ public interface IUserDao {
      * @return 用户列表
      */
 
+    @Select("select *,id as uid  from tb_user")
     List<User> findAll();
 
     User findById(Integer id);
