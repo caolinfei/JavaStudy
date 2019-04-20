@@ -3,6 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <properties>
+        <property name="drive" value="com.mysql.jdbc.Driver"></property>
+    </properties>
+    <typeAliases>
+        <!--<typeAlias type="com.study.domian.User" alias="user"></typeAlias>
+        <typeAlias type="com.study.domian.UserQuery" alias="userQuery"></typeAlias>-->
+        <package name="com.study.domian"></package>
+    </typeAliases>
+
+
     <!-- 配置 mybatis 的环境 -->
     <environments default="mysql">
         <!-- 配置 mysql 的环境 -->
@@ -11,7 +21,7 @@
             <transactionManager type="JDBC"></transactionManager>
             <!-- 配置连接数据库的信息：用的是数据源(连接池) -->
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="driver" value="${drive}"/>
                 <property name="url" value="jdbc:mysql://localhost:3306/db3"/>
                 <property name="username" value="root"/>
                 <property name="password" value="root"/>
@@ -20,6 +30,11 @@
     </environments>
     <!-- 告知 mybatis 映射配置的位置 -->
     <mappers>
-        <mapper resource="com/study/dao/IUserDao.xml"/>
+        <!--<mapper resource="com/study/dao/IUserMapper.xml"/>-->
+        <!--<mapper class="com.study.dao.IUserDao"></mapper>-->
+        <!--<mapper class="com.study.dao.IPersonDao"></mapper>-->
+       <!--<package name="com.study.dao"></package>-->
+        <package name="com.study.dao"></package>
     </mappers>
+
 </configuration>

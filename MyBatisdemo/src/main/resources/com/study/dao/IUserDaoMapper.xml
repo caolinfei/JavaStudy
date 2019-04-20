@@ -1,0 +1,21 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper>
+    <resultMap id="userAccountMap" type="user">
+        <id property="id" column="id"></id>
+        <result property="username" column="username"></result>
+        <result property="birthday" column="birthday"></result>
+        <result property="sex" column="sex"></result>
+        <result property="address" column="address"></result>
+        <association property="account" javaType="user">
+            <id property="id" column="accountId"></id>
+            <result property="uid" column="uid"></result>
+            <result property="money" column="money"></result>
+        </association>
+    </resultMap>
+    <select id="findUserWithAccount" resultMap="userAccountMap">
+    SELECT  *,a.id as accountId FROM user u INNER JOIN account  a on u.id=a.UID
+
+    </select>
+</mapper>

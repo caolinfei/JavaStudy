@@ -20,6 +20,7 @@ public class CustomTest {
         SqlSessionFactory build = builder.build(resourceAsStream);
         SqlSession sqlSession = build.openSession();
         IUserDao mapper = sqlSession.getMapper(IUserDao.class);
+        //以数据库查询出来result为准 来实体内找对应字段
         List<User> all = mapper.findAll();
 
         System.out.println(all);
