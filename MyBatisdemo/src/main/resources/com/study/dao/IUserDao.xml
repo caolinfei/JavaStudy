@@ -16,7 +16,7 @@
         SELECT  *FROM  tb_user where id =#{id}
     </select>
     <!--没有配置 type默认推断类型-->
-    <insert id="insert" parameterType="User" >
+    <insert id="insert" parameterType="User">
         <selectKey keyColumn="id" keyProperty="id" resultType="integer">
             SELECT LAST_INSERT_ID();
         </selectKey>
@@ -36,23 +36,85 @@
     </select>
 
 
-  <!--  SELECT * FROM  tb_user where username=#{user.UserName};如果数据库字段设置为不区分大小写可以使用BINARY强制区分大小写-->
+    <!--  SELECT * FROM  tb_user where username=#{user.UserName};如果数据库字段设置为不区分大小写可以使用BINARY强制区分大小写-->
     <sql id="defaultSelectSql">
        SELECT * FROM  tb_user
     </sql>
     <select id="selectByQuery" resultMap="userMap" parameterType="userQuery">
-      <include refid="defaultSelectSql"></include>
-    <where>
-       <if test="name!=null and name!=''">
-          AND  username=#{name}
-       </if>
-        <if test="ids!=null and ids.size()>0">
-            AND
-            <foreach collection="ids" open="id in (" close=")" item="id" separator=",">
-               #{id}
-            </foreach>
-        </if>
-    </where>
-
+        <include refid="defaultSelectSql"></include>
+        <where>
+            <if test="name!=null and name!=''">
+                AND username=#{name}
+            </if>
+            <if test="ids!=null and ids.size()>0">
+                AND
+                <foreach collection="ids" open="id in (" close=")" item="id" separator=",">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
     </select>
+    <!--一对一写法-->
+    <resultMap id="userAccountMap" type="userAccount">
+        <id property="id" column="id"></id>
+        <result property="username" column="username"></result>
+        <result property="birthday" column="birthday"></result>
+        <result property="sex" column="sex"></result>
+        <result property="address" column="address"></result>
+        <association resultMap="accountMap" property="account" javaType="account">
+            <!--<id property="id" column="accountId"></id>-->
+            <!--<result property="uid" column="uid"></result>-->
+            <!--<result property="money" column="money"></result>-->
+        </association>
+    </resultMap>
+    <resultMap id="accountMap" type="account">
+
+        <id property="id" column="accountId"></id>
+        <result property="uid" column="uid"></result>
+        <result property="money" column="money"></result>
+    </resultMap>
+    <!--偷懒的sql一对一-->
+    <!--<select id="findUserWithAccount" resultMap="userAccountMap">-->
+    <!--SELECT  *,a.id as accountId FROM user u INNER JOIN account  a on u.id=a.UID-->
+    <!--</select>-->
+
+    <!--偷懒的sql一对多-->
+    <select id="findUserWithAccount" resultMap="userAccountManyMap">
+        SELECT  *,a.id as accountId FROM user u INNER JOIN account  a on u.id=a.UID
+    </select>
+    <resultMap id="userAccountManyMap" type="userAccount">
+        <id property="id" column="id"></id>
+        <result property="username" column="username"></result>
+        <result property="birthday" column="birthday"></result>
+        <result property="sex" column="sex"></result>
+        <result property="address" column="address"></result>
+        <collection property="accounts" ofType="account">
+            <id property="id" column="accountId"></id>
+            <result property="uid" column="uid"></result>
+            <result property="money" column="money"></result>
+        </collection>
+    </resultMap>
+    <!--多对多-->
+    <select id="findUserRole" resultMap="userRole">
+        SELECT u.*,r.ID as rid,r.ROLE_NAME as rolename,r.ROLE_DESC as roledesc FROM user u LEFT JOIN user_role ur on u.id=ur.UID LEFT JOIN role r on ur.RID=r.ID
+    </select>
+    <resultMap id="roleMapBase"  type="Role">
+        <id column="id" property="id"></id>
+        <result property="roleName" column="rolename"></result>
+        <result property="roleDesc" column="roledesc"></result>
+    </resultMap>
+    <resultMap id="userMapBase"  type="userAccount">
+        <id property="id" column="id"></id>
+        <result property="username" column="username"></result>
+        <result property="birthday" column="birthday"></result>
+        <result property="sex" column="sex"></result>
+        <result property="address" column="address"></result>
+    </resultMap>
+    <resultMap id="roleMap"  type="Role" extends="roleMapBase">
+        <id column="rid" property="id"></id>
+    </resultMap>
+    <resultMap id="userRole" type="userAccount" extends="userMapBase">
+        <collection property="roles"  resultMap="roleMap" ofType="Role">
+        </collection>
+    </resultMap>
 </mapper>

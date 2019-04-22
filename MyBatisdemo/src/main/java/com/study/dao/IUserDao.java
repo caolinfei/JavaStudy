@@ -1,6 +1,7 @@
 package com.study.dao;
 
 import com.study.domian.User;
+import com.study.domian.UserAccount;
 import com.study.domian.UserQuery;
 import org.apache.ibatis.annotations.Select;
 
@@ -13,7 +14,7 @@ public interface IUserDao {
      * @return 用户列表
      */
 
-    @Select("select *,id as uid  from tb_user")
+   // @Select("select *,id as uid  from tb_user")
     List<User> findAll();
 
     User findById(Integer id);
@@ -29,4 +30,8 @@ public interface IUserDao {
     User findByName(String name);
 
     List<User> selectByQuery(UserQuery query);
+
+    List<UserAccount>findUserWithAccount();
+
+    List<UserAccount>findUserRole();
 }
