@@ -32,8 +32,8 @@ public class main {
 
         for (int i = 0; i < 5; i++) {
             accountService=context.getBean("accountService",MyAccountService.class);
-            System.out.println(accountService);
-        }
+        System.out.println(accountService);
+    }
         // 使用BeanFactory创建
 //        BeanFactory factory=new XmlBeanFactory( new ClassPathResource("bean.xml")
 //        );
