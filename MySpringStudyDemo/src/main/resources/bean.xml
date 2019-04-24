@@ -8,7 +8,35 @@
           Bean的元素说明:
            1:id 唯一标示符
            2:class 要反射创建类的权限定类名 默认调用无参的构造函数
-           3:scope:对象的作用范围 默认为
+           3:scope:对象的作用范围 默认为Singleton 默认情况下是单列的
+                    Singleton 单列的 由Spring来管理是否销毁
+                    prototype  多列的 由JVM来管理是否销毁
+                    request web 中一次request请求
+                    session web 中一次session会话 存在session域中
+                    global session 在集群环境中 一次session会话中
     -->
-    <bean id="accountService" class="com.study.MyAccountServiceImpl"></bean>
+    <!--实例化bean的三种方式
+        第一种: 配置一个Bean class=实现类的
+                <bean id="accountService" class="com.study.MyAccountServiceImpl"></bean>
+
+        第二种 静态工厂方法的方式
+                创建一个静态类 提供一个静态方法返回实现类
+        <bean id="accountService" class="com.study.StaticBeanFactory" factory-method="createAccountSeviceImpl"></bean>
+
+        第三种 实例工厂 实例方法的方式
+            创建一个一个实例工厂
+
+
+    -->
+    <!--第一种方法-->
+    <!--<bean id="accountService" class="com.study.MyAccountServiceImpl"></bean>-->
+
+    <!--第二种方法-->
+        <!--<bean id="accountService" class="com.study.StaticBeanFactory" factory-method="createAccountSeviceImpl"></bean>-->
+    <!--
+        第三种方法
+    -->
+    <bean id="instanceFactory" class=" com.study.InstanceFactory"></bean>
+    <bean id="accountService" factory-bean="instanceFactory" factory-method="createAccountSeviceImpl"></bean>
+
 </beans>

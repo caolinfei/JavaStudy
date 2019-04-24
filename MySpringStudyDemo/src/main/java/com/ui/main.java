@@ -18,16 +18,20 @@ public class main {
          * Spring XML的几种加载方式:
          *       1:ClassPathXmlApplicationContext 使用Resource下文件加载 它是从类的根路径下加载配置文件
          *       2:FileSystemXmlApplicationContext 使用的是当前电脑的根路径
-         *       3:Annotation的方式 (视频未看)
+         *       3:Annotation的方式 (视频未看) 基于注解的方式配置
          * BeanFactory和ApplicationContext的区别
          *       1:BeanFactory 是对象需要的时候才实例化  BeanFactory factory=new XmlBeanFactory( new ClassPathResource("bean.xml")
          *                       XmlBeanFactory已经是过时的方法了
-         *       2:ApplicationContext 在加载Bean.XML的时候就把对象实例化
+         *       2:ApplicationContext 在加载Bean.XML的时候就把对象实例化 一次性将所有的对象都实例化
+         *
+         * Bean的细节以及实例化三种ben的范式见Bean.xml
+         *
+         * Spring的依赖注入
          *
          * */
 
-        ApplicationContext context =new FileSystemXmlApplicationContext("C:\\Users\\Administrator\\Desktop\\bean.xml");
-        //ApplicationContext context=new ClassPathXmlApplicationContext("bean.xml");
+        //ApplicationContext context =new FileSystemXmlApplicationContext("C:\\Users\\Administrator\\Desktop\\bean.xml");
+        ApplicationContext context=new ClassPathXmlApplicationContext("bean.xml");
         MyAccountService accountService = context.getBean("accountService", MyAccountService.class);
 
         for (int i = 0; i < 5; i++) {
