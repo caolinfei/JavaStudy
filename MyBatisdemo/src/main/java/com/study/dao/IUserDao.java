@@ -3,7 +3,6 @@ package com.study.dao;
 import com.study.domian.User;
 import com.study.domian.UserAccount;
 import com.study.domian.UserQuery;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 

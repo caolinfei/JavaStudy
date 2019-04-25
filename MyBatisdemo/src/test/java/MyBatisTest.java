@@ -35,8 +35,9 @@ public class MyBatisTest {
      */
     @Test
     public void Query() throws IOException {
-        List<User> all = iUserDao.findAll();
-        System.out.println(all);
+//        List<User> all = iUserDao.findAll();
+//        System.out.println(all);
+        String i=iUserDao.toString();
     }
 
     @Test
