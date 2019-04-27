@@ -28,15 +28,24 @@
 
 
     -->
-    <!--第一种方法-->
-    <!--<bean id="accountService" class="com.study.MyAccountServiceImpl"></bean>-->
+    <!--第一种方法 service-->
+    <bean id="accountService" class="com.study.MyAccountServiceImpl">
+        <!--构造函数注入的方式 构造函数注入是在对象初始化的时候注入进去的-->
+        <!--<constructor-arg name="age" value="12" ></constructor-arg>-->
+        <!--<constructor-arg name="name" value="张三"></constructor-arg>-->
+        <!--属性注入 是在对象实例化完成之后再注入的-->
+        <property name="age" value="123"></property>
+        <property name="name" value="helloWord"></property>
 
-    <!--第二种方法-->
+
+    </bean>
+
+    <!--第二种方法 静态工厂-->
         <!--<bean id="accountService" class="com.study.StaticBeanFactory" factory-method="createAccountSeviceImpl"></bean>-->
     <!--
-        第三种方法
+        第三种方法 实例工厂
     -->
-    <bean id="instanceFactory" class=" com.study.InstanceFactory"></bean>
-    <bean id="accountService" factory-bean="instanceFactory" factory-method="createAccountSeviceImpl"></bean>
+    <!--<bean id="instanceFactory" class=" com.study.InstanceFactory"></bean>-->
+    <!--<bean id="accountService" factory-bean="instanceFactory" factory-method="createAccountSeviceImpl"></bean>-->
 
 </beans>

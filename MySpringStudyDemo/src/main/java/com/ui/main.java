@@ -27,6 +27,10 @@ public class main {
          * Bean的细节以及实例化三种ben的范式见Bean.xml
          *
          * Spring的依赖注入
+         *      构造函数注入:
+         *                      在bean标签下使用 constructor-arg name="name" value=" 张三 "></constructor-arg>
+         *                  如果是基本类型 直接赋值 如果是其他bean对象则需要ref 指向已经配置的bean的Id
+         *      set属性注入
          *
          * */
 
@@ -36,7 +40,7 @@ public class main {
 
         for (int i = 0; i < 5; i++) {
             accountService=context.getBean("accountService",MyAccountService.class);
-        System.out.println(accountService);
+            System.out.println(accountService);
     }
         // 使用BeanFactory创建
 //        BeanFactory factory=new XmlBeanFactory( new ClassPathResource("bean.xml")
