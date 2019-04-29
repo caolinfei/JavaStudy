@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
@@ -29,17 +30,25 @@
 
     -->
     <!--第一种方法 service-->
-    <bean id="accountService" class="com.study.MyAccountServiceImpl">
+    <bean id="accountService"
+          class="com.study.MyAccountServiceImpl"
+    p:age="18" p:name="张三p" p:brithday-ref="now"
+    >
         <!--构造函数注入的方式 构造函数注入是在对象初始化的时候注入进去的-->
         <!--<constructor-arg name="age" value="12" ></constructor-arg>-->
         <!--<constructor-arg name="name" value="张三"></constructor-arg>-->
         <!--属性注入 是在对象实例化完成之后再注入的-->
-        <property name="age" value="123"></property>
-        <property name="name" value="helloWord"></property>
+        <!--<property name="age" value="123"></property>-->
+        <!--<property name="name" value="helloWord"></property>-->
+        <!--p标签的方式导入  如图上在标签内配置 本质上还是
+        Property -ref只支持引用类型的数据
+
+        -->
 
 
     </bean>
 
+    <bean id="now" class="java.util.Date"></bean>
     <!--第二种方法 静态工厂-->
         <!--<bean id="accountService" class="com.study.StaticBeanFactory" factory-method="createAccountSeviceImpl"></bean>-->
     <!--

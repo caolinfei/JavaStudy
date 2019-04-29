@@ -1,6 +1,14 @@
 package com.study;
 
+import java.util.*;
+
 public class MyAccountServiceImpl implements MyAccountService {
+   private List<String> strings;
+   private Set<String> sets;
+   private HashMap<String,String> map;
+   private Properties properties;
+
+
     private  int age;
 
     public int getAge() {
@@ -11,6 +19,15 @@ public class MyAccountServiceImpl implements MyAccountService {
         this.age = age;
     }
 
+    public Date getBrithday() {
+        return brithday;
+    }
+
+    public void setBrithday(Date brithday) {
+        this.brithday = brithday;
+    }
+
+    public Date brithday;
     public MyAccountServiceImpl() {
     }
 
@@ -35,6 +52,7 @@ public class MyAccountServiceImpl implements MyAccountService {
     public String toString() {
         return "MyAccountServiceImpl{" +
                 "age=" + age +
+                ", brithday=" + brithday +
                 ", name='" + name + '\'' +
                 '}';
     }

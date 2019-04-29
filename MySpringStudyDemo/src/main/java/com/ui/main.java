@@ -31,7 +31,11 @@ public class main {
          *                      在bean标签下使用 constructor-arg name="name" value=" 张三 "></constructor-arg>
          *                  如果是基本类型 直接赋值 如果是其他bean对象则需要ref 指向已经配置的bean的Id
          *      set属性注入
-         *
+         *          bean 文本内容里配置Property
+         *      p标签的配置方式
+         *           xmlns:p="http://www.springframework.org/schema/p"
+         *           在bean标签的内部填写 p:name="" ref 支持引用类型
+         *           需要直接指向一个bean对象
          * */
 
         //ApplicationContext context =new FileSystemXmlApplicationContext("C:\\Users\\Administrator\\Desktop\\bean.xml");
