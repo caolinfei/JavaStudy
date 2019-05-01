@@ -5,8 +5,41 @@ import java.util.*;
 public class MyAccountServiceImpl implements MyAccountService {
    private List<String> strings;
    private Set<String> sets;
-   private HashMap<String,String> map;
-   private Properties properties;
+   private Map<String,String> map;
+
+    public List<String> getStrings() {
+        return strings;
+    }
+
+    public void setStrings(List<String> strings) {
+        this.strings = strings;
+    }
+
+    public Set<String> getSets() {
+        return sets;
+    }
+
+    public void setSets(Set<String> sets) {
+        this.sets = sets;
+    }
+
+    public Map<String, String> getMap() {
+        return map;
+    }
+
+    public void setMap(Map<String, String> map) {
+        this.map = map;
+    }
+
+    public Properties getProperties() {
+        return properties;
+    }
+
+    public void setProperties(Properties properties) {
+        this.properties = properties;
+    }
+
+    private Properties properties;
 
 
     private  int age;
@@ -51,7 +84,11 @@ public class MyAccountServiceImpl implements MyAccountService {
     @Override
     public String toString() {
         return "MyAccountServiceImpl{" +
-                "age=" + age +
+                "strings=" + strings +
+                ", sets=" + sets +
+                ", map=" + map +
+                ", properties=" + properties +
+                ", age=" + age +
                 ", brithday=" + brithday +
                 ", name='" + name + '\'' +
                 '}';

@@ -42,14 +42,18 @@ public class main {
         ApplicationContext context=new ClassPathXmlApplicationContext("bean.xml");
         MyAccountService accountService = context.getBean("accountService", MyAccountService.class);
 
-        for (int i = 0; i < 5; i++) {
-            accountService=context.getBean("accountService",MyAccountService.class);
-            System.out.println(accountService);
-    }
+        //  默认创建的是单列的
+//        for (int i = 0; i < 5; i++) {
+//            accountService=context.getBean("accountService",MyAccountService.class);
+//            System.out.println(accountService);
+//    }
+        accountService=context.getBean("accountService",MyAccountService.class);
+
+        System.out.println(accountService.toString());
         // 使用BeanFactory创建
 //        BeanFactory factory=new XmlBeanFactory( new ClassPathResource("bean.xml")
 //        );
 //        MyAccountService accountService = factory.getBean("accountService", MyAccountService.class);
-        accountService.SayHello();
+        //accountService.SayHello();
     }
 }
