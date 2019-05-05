@@ -32,7 +32,7 @@
     <!--第一种方法 service-->
     <bean id="accountService"
           class="com.study.MyAccountServiceImpl"
-    p:age="18" p:name="张三p" p:brithday-ref="now"
+          p:age="18" p:name="张三p" p:brithday-ref="now"
     >
         <!--构造函数注入的方式 构造函数注入是在对象初始化的时候注入进去的-->
         <!--<constructor-arg name="age" value="12" ></constructor-arg>-->
@@ -42,15 +42,41 @@
         <!--<property name="name" value="helloWord"></property>-->
         <!--p标签的方式导入  如图上在标签内配置 本质上还是
         Property -ref只支持引用类型的数据
+        get set 注入集合
 
+            注入 数组的 property  set value
+                 注入list
         -->
-
-
+        <property name="strings">
+            <!--<set>-->
+                <!--<value>张三</value>-->
+                <!--<value>李四</value>-->
+                <!--<value>王五</value>-->
+            <!--</set>-->
+        <array>
+            <value>1</value>
+            <value>2</value>
+            <value>3</value>
+        </array>
+        </property>
+    <property name="map">
+        <props>
+            <prop key="test">
+                mapTest
+            </prop>
+        </props>
+<!--配置properties  本身是一个key value  -->
+    </property>
+        <property name="properties">
+            <map>
+                <entry key="abc" value="123"></entry>
+            </map>
+        </property>
     </bean>
 
     <bean id="now" class="java.util.Date"></bean>
     <!--第二种方法 静态工厂-->
-        <!--<bean id="accountService" class="com.study.StaticBeanFactory" factory-method="createAccountSeviceImpl"></bean>-->
+    <!--<bean id="accountService" class="com.study.StaticBeanFactory" factory-method="createAccountSeviceImpl"></bean>-->
     <!--
         第三种方法 实例工厂
     -->
