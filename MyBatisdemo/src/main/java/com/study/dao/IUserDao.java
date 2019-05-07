@@ -33,4 +33,6 @@ public interface IUserDao {
     List<UserAccount>findUserWithAccount();
 
     List<UserAccount>findUserRole();
+
+    UserAccount findUserAccouunt();
 }

@@ -117,4 +117,12 @@
         <collection property="roles"  resultMap="roleMap" ofType="Role">
         </collection>
     </resultMap>
+    <resultMap id="lazyLoadUserAccount" type="userAccount" extends="userMapBase></resultMap>
+    <!--
+        延迟加载
+    -->
+    <select id="findUserAccouunt">
+        SELECT  *FROM  user
+
+    </select>
 </mapper>
