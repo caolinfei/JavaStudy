@@ -117,12 +117,20 @@
         <collection property="roles"  resultMap="roleMap" ofType="Role">
         </collection>
     </resultMap>
-    <resultMap id="lazyLoadUserAccount" type="userAccount" extends="userMapBase></resultMap>
-    <!--
-        延迟加载
-    -->
-    <select id="findUserAccouunt">
-        SELECT  *FROM  user
+
+    <!--延迟加载-->
+
+    <resultMap id="lazyLoadUserAccount" type="userAccount" extends="userMapBase">
+
+        <!--<association property="accounts" select="findAccountByuId" column="id"></association>-->
+        <collection property="accounts" select="findAccountByuId" column="id"></collection>
+    </resultMap>
+
+    <select id="findUserAccouunt" resultMap="lazyLoadUserAccount">
+        SELECT  *FROM  user where id=46
 
     </select>
+    <select id="findAccountByuId" resultMap="accountMap" parameterType="int">
+    SELECT  *FROM  account where uid=#{uid}
+</select>
 </mapper>
