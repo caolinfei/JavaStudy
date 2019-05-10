@@ -8,9 +8,12 @@ import java.lang.reflect.TypeVariable;
 
 public class Respsitory<T> {
 
+    public  Respsitory(){}
+
     public  Respsitory(Class<? extends  Respsitory> tClass){
 
         this.extentClass=tClass;
+
     }
     private Class  extentClass;
 

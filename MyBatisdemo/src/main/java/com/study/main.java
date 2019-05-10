@@ -2,8 +2,11 @@ package com.study;
 
 import com.study.domian.Account;
 import com.study.domian.UserAccount;
+import com.study.repositories.Respsitory;
+import com.study.repositories.UserAccountRepository;
 import org.apache.log4j.lf5.util.ResourceUtils;
 
+import java.lang.reflect.TypeVariable;
 import java.util.*;
 
 public class main {
@@ -40,8 +43,11 @@ public class main {
 //        Object[] o = ints;
 //        o[0] = "hello";
 
-        Base b=new ZI1();
-        b.show("123");
+//        Base b=new ZI1();
+//        b.show("123");
+
+        Respsitory<UserAccount> a= new  Respsitory();
+        TypeVariable<? extends Class<? extends Respsitory>>[] typeParameters = a.getClass().getTypeParameters();
 
     }
 }
