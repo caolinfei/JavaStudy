@@ -1,9 +1,16 @@
 package com.study.collectionandGeneric;
 
 import javax.jws.WebParam;
+import java.lang.reflect.Type;
 
 public class GenericClass<E> {
 
+    public  GenericClass()
+    {
+        Type genericSuperclass = eClass.getGenericSuperclass();
+    }
+    
+    public  Class<E> eClass;
 
     public E getModel() {
         return Model;
@@ -23,4 +30,6 @@ public class GenericClass<E> {
     {
         System.out.println(Model);
     }
+
+
 }

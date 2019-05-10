@@ -18,7 +18,7 @@ public class main {
          * Spring XML的几种加载方式:
          *       1:ClassPathXmlApplicationContext 使用Resource下文件加载 它是从类的根路径下加载配置文件
          *       2:FileSystemXmlApplicationContext 使用的是当前电脑的根路径
-         *       3:Annotation的方式 (视频未看) 基于注解的方式配置
+         *       3:Annotation的方式 基于注解的方式配置
          * BeanFactory和ApplicationContext的区别
          *       1:BeanFactory 是对象需要的时候才实例化  BeanFactory factory=new XmlBeanFactory( new ClassPathResource("bean.xml")
          *                       XmlBeanFactory已经是过时的方法了
