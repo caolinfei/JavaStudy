@@ -1,26 +1,25 @@
 package com.ui;
 
 import com.study.MyAccountService;
-import com.study.MyAccountServiceImpl;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 
 public class main {
+
+    /*
+
+
+     */
     public static void main(String[] args) {
 
         /*
-         *
+         *  Day_01
          * Spring XML的几种加载方式:
          *       1:ClassPathXmlApplicationContext 使用Resource下文件加载 它是从类的根路径下加载配置文件
          *       2:FileSystemXmlApplicationContext 使用的是当前电脑的根路径
          *       3:Annotation的方式 (视频未看) 基于注解的方式配置
          * BeanFactory和ApplicationContext的区别
-         *       1:BeanFactory 是对象需要的时候才实例化  BeanFactory factory=new XmlBeanFactory( new ClassPathResource("bean.xml")
+         *       1:BeanFactory 是对象需要的时候才实例化  BeanFactory factory=new XmlBeanFactory( new ClassPathResource("beanday01.xml")
          *                       XmlBeanFactory已经是过时的方法了
          *       2:ApplicationContext 在加载Bean.XML的时候就把对象实例化 一次性将所有的对象都实例化
          *
@@ -38,8 +37,8 @@ public class main {
          *           需要直接指向一个bean对象
          * */
 
-        //ApplicationContext context =new FileSystemXmlApplicationContext("C:\\Users\\Administrator\\Desktop\\bean.xml");
-        ApplicationContext context=new ClassPathXmlApplicationContext("bean.xml");
+        //ApplicationContext context =new FileSystemXmlApplicationContext("C:\\Users\\Administrator\\Desktop\\beanday01.xml");
+        ApplicationContext context=new ClassPathXmlApplicationContext("beanday01.xml");
         MyAccountService accountService = context.getBean("accountService", MyAccountService.class);
 
         //  默认创建的是单列的
@@ -51,7 +50,7 @@ public class main {
 
         System.out.println(accountService.toString());
         // 使用BeanFactory创建
-//        BeanFactory factory=new XmlBeanFactory( new ClassPathResource("bean.xml")
+//        BeanFactory factory=new XmlBeanFactory( new ClassPathResource("beanday01.xml")
 //        );
 //        MyAccountService accountService = factory.getBean("accountService", MyAccountService.class);
         //accountService.SayHello();
