@@ -1,5 +1,6 @@
 package com.study.dao;
 
+import com.study.domian.Account;
 import com.study.domian.User;
 import com.study.domian.UserAccount;
 import com.study.domian.UserQuery;
@@ -33,4 +34,8 @@ public interface IUserDao {
     List<UserAccount>findUserWithAccount();
 
     List<UserAccount>findUserRole();
+
+    UserAccount findUserAccouunt();
+
+    List<Account> findAccountByuId(int uid);
 }

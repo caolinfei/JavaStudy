@@ -2,7 +2,6 @@ package com.proxy;
 
 
 import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 
 public class MyInvocationHandler implements InvocationHandler {

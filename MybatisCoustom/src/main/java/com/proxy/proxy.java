@@ -2,12 +2,7 @@ package com.proxy;
 
 import sun.misc.ProxyGenerator;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 
 public class proxy {
 
@@ -33,7 +28,7 @@ public class proxy {
 //        });
 //        computer.sale(123);
 //
-//        byte[] $Prox0s = ProxyGenerator.generateProxyClass("$Prox0", new Class[]{Computer.class});
+      byte[] $Prox0s = ProxyGenerator.generateProxyClass("$Prox0", new Class[]{Computer.class});
 //
 //        FileOutputStream outputStream=new FileOutputStream("$Prox0.class");
 //        outputStream.write($Prox0s);

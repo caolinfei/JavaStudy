@@ -1,3 +1,4 @@
+import com.study.dao.IAccountDao;
 import com.study.dao.IUserDao;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -11,6 +12,7 @@ import java.io.IOException;
 public class MybatisBaseTest {
 
     public IUserDao userDao;
+    public IAccountDao accountDao;
     public SqlSession sqlSession;
 
     @Before
@@ -18,6 +20,7 @@ public class MybatisBaseTest {
         SqlSessionFactory build = new SqlSessionFactoryBuilder().build(Resources.getResourceAsReader("SqlMapConfig.xml"));
         sqlSession = build.openSession();
         userDao = sqlSession.getMapper(IUserDao.class);
+        accountDao=sqlSession.getMapper(IAccountDao.class);
     }
 
     @After
