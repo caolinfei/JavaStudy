@@ -6,9 +6,12 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 
-public class Respsitory<T> {
+public class Respsitory<T extends Object> {
 
-    public  Respsitory(){}
+    public  Respsitory(){
+        System.out.println(this);
+
+    }
 
     public  Respsitory(Class<? extends  Respsitory> tClass){
 

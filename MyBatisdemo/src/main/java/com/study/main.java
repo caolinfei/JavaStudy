@@ -4,6 +4,7 @@ import com.study.domian.Account;
 import com.study.domian.UserAccount;
 import com.study.repositories.Respsitory;
 import com.study.repositories.UserAccountRepository;
+import com.study.repositories.user3impl;
 import org.apache.log4j.lf5.util.ResourceUtils;
 
 import java.lang.reflect.TypeVariable;
@@ -46,8 +47,8 @@ public class main {
 //        Base b=new ZI1();
 //        b.show("123");
 
-        Respsitory<UserAccount> a= new  Respsitory();
-        TypeVariable<? extends Class<? extends Respsitory>>[] typeParameters = a.getClass().getTypeParameters();
+        Respsitory<Account> a= new user3impl(){};
+        //a.getClass().getTypeParameters();
 
     }
 }
