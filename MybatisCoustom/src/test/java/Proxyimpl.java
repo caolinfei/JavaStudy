@@ -1,0 +1,81 @@
+//import com.proxy.Computer;
+//
+//import java.lang.reflect.InvocationHandler;
+//import java.lang.reflect.Method;
+//import java.lang.reflect.Proxy;
+//import java.lang.reflect.UndeclaredThrowableException;
+//
+//public  class Proxyimpl extends Proxy implements Computer
+//{
+//    private static Method m1;
+//    private static Method m3;
+//    private static Method m2;
+//    private static Method m0;
+//
+//    public Proxyimpl(final InvocationHandler invocationHandler) {
+//        super(invocationHandler);
+//    }
+//
+//    public final boolean equals(final Object o) {
+//        try {
+//            return (boolean)super.h.invoke(this, com.proxy.Proxyimpl.m1, new Object[] { o });
+//        }
+//        catch (Error | RuntimeException error) {
+//            throw error;
+//        }
+//        catch (Throwable t) {
+//            throw new UndeclaredThrowableException(t);
+//        }
+//    }
+//
+//    public final String sale(final double n) {
+//        try {
+//            return (String)super.h.invoke(this, com.proxy.Proxyimpl.m3, new Object[] { n });
+//        }
+//        catch (Error | RuntimeException error) {
+//            throw error;
+//        }
+//        catch (Throwable t) {
+//            throw new UndeclaredThrowableException(t);
+//        }
+//    }
+//
+//    public final String toString() {
+//        try {
+//            return (String)super.h.invoke(this, com.proxy.Proxyimpl.m2, null);
+//        }
+//        catch (Error | RuntimeException error) {
+//            throw error;
+//        }
+//        catch (Throwable t) {
+//            throw new UndeclaredThrowableException(t);
+//        }
+//    }
+//
+//    public final int hashCode() {
+//        try {
+//            return (int)super.h.invoke(this, com.proxy.Proxyimpl.m0, null);
+//        }
+//        catch (Error | RuntimeException error) {
+//            throw error;
+//        }
+//        catch (Throwable t) {
+//            throw new UndeclaredThrowableException(t);
+//        }
+//    }
+//
+//    static {
+//        try {
+//            com.proxy.Proxyimpl.m1 = Class.forName("java.lang.Object").getMethod("equals", Class.forName("java.lang.Object"));
+//            com.proxy.Proxyimpl.m3 = Class.forName("com.proxy.Computer").getMethod("sale", Double.TYPE);
+//            com.proxy.Proxyimpl.m2 = Class.forName("java.lang.Object").getMethod("toString", (Class<?>[])new Class[0]);
+//            com.proxy.Proxyimpl.m0 = Class.forName("java.lang.Object").getMethod("hashCode", (Class<?>[])new Class[0]);
+//        }
+//        catch (NoSuchMethodException ex) {
+//            throw new NoSuchMethodError(ex.getMessage());
+//        }
+//        catch (ClassNotFoundException ex2) {
+//            throw new NoClassDefFoundError(ex2.getMessage());
+//        }
+//    }
+//}
