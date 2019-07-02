@@ -38,7 +38,7 @@ public class main {
          * */
 
         //ApplicationContext context =new FileSystemXmlApplicationContext("C:\\Users\\Administrator\\Desktop\\beanday01.xml");
-        ApplicationContext context=new ClassPathXmlApplicationContext("beanday01.xml");
+        ApplicationContext context=new ClassPathXmlApplicationContext("classpath:beanday01.xml");
         MyAccountService accountService = context.getBean("accountService", MyAccountService.class);
 
         //  默认创建的是单列的
