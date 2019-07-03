@@ -2,10 +2,16 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!--引入外部Config-->
     <bean id="placeholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -20,6 +26,21 @@
         <property name="url" value="${db.url}"></property>
         <property name="username" value="${db.username}"></property>
         <property name="password" value="${db.password}"></property>
+        <property name="filters" value="stat" />
+
+        <property name="maxActive" value="${jdbc.maxActive}" /><!-- 连接池最大使用连接数量 -->
+        <property name="initialSize" value="${jdbc.initialSize}" /><!--
+			初始化大小 -->
+
+        <property name="maxWait" value="${jdbc.maxWait}" /> <!-- 获取连接最大等待时间 -->
+
+        <!-- <property name="maxIdle" value="${jdbc.maxIdle}" /> --> <!-- 连接池最大空闲 -->
+        <property name="minIdle" value="${jdbc.minIdle}" /><!-- 连接池最小空闲 -->
+
+        <property name="timeBetweenEvictionRunsMillis" value="3000" /><!--
+			逐出连接的检测时间间隔 -->
+        <property name="minEvictableIdleTimeMillis" value="300000" /><!--
+			最小逐出时间 -->
     </bean>
 
     <!--配置dbUtils-->
@@ -29,4 +50,41 @@
 
     <!--配置包扫描-->
     <context:component-scan base-package="com.study"></context:component-scan>
+    <!--配置AOP 自定义的事务管理器事务管理器-->
+    <!--<aop:config>-->
+        <!--<aop:aspect id="transaction" ref="transactionManage">-->
+            <!--<aop:around-->
+                    <!--method="around"-->
+                    <!--pointcut="execution(* com.study.service.impl.*.*(..))" ></aop:around>-->
+        <!--</aop:aspect>-->
+
+    <!--</aop:config>-->
+
+    <!--Spring的事务-->
+    <!--1配置Spring事务管理器对象-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <!-- 配置事务的通知-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <!-- 配置事务的属性
+                isolation：用于指定事务的隔离级别。默认值是DEFAULT，表示使用数据库的默认隔离级别。
+                propagation：用于指定事务的传播行为。默认值是REQUIRED，表示一定会有事务，增删改的选择。查询方法可以选择SUPPORTS。
+                read-only：用于指定事务是否只读。只有查询方法才能设置为true。默认值是false，表示读写。
+                timeout：用于指定事务的超时时间，默认值是-1，表示永不超时。如果指定了数值，以秒为单位。
+                rollback-for：用于指定一个异常，当产生该异常时，事务回滚，产生其他异常时，事务不回滚。没有默认值。表示任何异常都回滚。
+                no-rollback-for：用于指定一个异常，当产生该异常时，事务不回滚，产生其他异常时事务回滚。没有默认值。表示任何异常都回滚。
+        -->
+        <tx:attributes>
+        <tx:method name="*" propagation="REQUIRED" read-only="false"/>
+        <!--<tx:method name="find*" propagation="SUPPORTS" read-only="true"></tx:method>-->
+    </tx:attributes>
+    </tx:advice>
+    <!-- 配置aop-->
+    <aop:config>
+        <!-- 配置切入点表达式-->
+        <aop:pointcut id="pt1" expression="execution(* com.study.service.impl.*.*(..)))"></aop:pointcut>
+        <!--建立切入点表达式和事务通知的对应关系 -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pt1"></aop:advisor>
+    </aop:config>
 </beans>

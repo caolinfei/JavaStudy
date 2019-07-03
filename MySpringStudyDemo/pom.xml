@@ -7,6 +7,18 @@
     <groupId>com.MySpringStudyDemo</groupId>
     <artifactId>MySpringStudyDemo</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <packaging>jar</packaging>
 
     <!--导入Spring的坐标-->
@@ -62,6 +74,19 @@
             <artifactId>spring-test</artifactId>
             <version>5.0.2.RELEASE</version>
             <scope>test</scope>
+        </dependency>
+        <!--AOP-->
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.8.7</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+            <version>5.0.2.RELEASE</version>
         </dependency>
     </dependencies>
 

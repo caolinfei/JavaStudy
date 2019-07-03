@@ -1,5 +1,6 @@
 package com.study.dao.utils;
 
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +16,6 @@ public class TransactionManage {
     private ConnectionUtils connectionUtils;
 
     /**
-     *
      * 开启事务支持 当前线程内取出连接 设置非自动提交事务
      */
     public void beignTranscation() {
@@ -27,7 +27,6 @@ public class TransactionManage {
     }
 
     /**
-     *
      * 提交事务
      */
     public void commit() {
@@ -39,8 +38,7 @@ public class TransactionManage {
     }
 
     /**
-     *回滚事务
-     *
+     * 回滚事务
      */
     public void rollback() {
         try {
@@ -51,8 +49,7 @@ public class TransactionManage {
     }
 
     /**
-     *关闭连接
-     *
+     * 关闭连接
      */
     public void close() {
         try {
@@ -63,5 +60,24 @@ public class TransactionManage {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+
+    public Object around(ProceedingJoinPoint proceedingJoinPoint) {
+
+        System.out.println("执行了环绕通知");
+        Object result = null;
+        try {
+            beignTranscation();
+            result = proceedingJoinPoint.proceed(proceedingJoinPoint.getArgs());
+            commit();
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            rollback();
+            throw new RuntimeException(throwable);
+        } finally {
+            close();
+        }
+        return result;
     }
 }

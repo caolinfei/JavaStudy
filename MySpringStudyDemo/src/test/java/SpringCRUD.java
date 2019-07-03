@@ -22,6 +22,7 @@ import java.lang.reflect.Proxy;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.util.List;
+import java.util.concurrent.*;
 
 /**
  * Spring 整合junit
@@ -103,5 +104,25 @@ public class SpringCRUD {
 //        accountService.update(a2);
         accountServiceServiceProxtFactory.setService(accountService);
         accountServiceServiceProxtFactory.getService().transfer(1, 2, new BigDecimal(200));
+    }
+
+    @Test
+    public void aopTransfer() {
+//        for (int i = 0; i < 1000; i++) {
+//            accountService.transfer(1,2,new BigDecimal(200));
+//        }
+
+//        List<Account> all = accountService.findAll();
+//        System.out.println(all);
+
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        for (int i = 0; i < 5; i++) {
+
+            executorService.execute(()->{
+                accountService.transfer(1,2,new BigDecimal(200));
+            });
+        }
+
+
     }
 }

@@ -98,14 +98,15 @@ public class AccountService implements IAccountService {
         return 0;
     }
 
-    @Transaction
+    //@Transaction
     public void transfer(int fromId, int toId, BigDecimal money) {
+        System.out.println("transfer执行");
         Account account1 = getById(fromId);
         Account account2 = getById(toId);
         account1.setMoney(account1.getMoney().subtract(new BigDecimal(200)));
         account2.setMoney(account2.getMoney().add(new BigDecimal(200)));
         update(account1);
-        int i=1/0;
+        //int i=1/0;
         update(account2);
     }
 }
