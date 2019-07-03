@@ -1,6 +1,8 @@
 package com.study.service.impl;
 
+import com.study.annotation.Transaction;
 import com.study.dao.IAccountDao;
+import com.study.dao.utils.ConnectionUtils;
 import com.study.domain.Account;
 import com.study.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.annotation.Resources;
+import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -77,23 +80,32 @@ public class AccountService implements IAccountService {
         return null;
     }
 
-    public  Integer update(Account account)
-    {
+    public Integer update(Account account) {
         try {
-            return  accountDao.update(account);
+            return accountDao.update(account);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return  0;
+        return 0;
     }
 
-    public  Integer inster(Account account)
-    {
+    public Integer inster(Account account) {
         try {
-            return  accountDao.insert(account);
+            return accountDao.insert(account);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return  0;
+        return 0;
+    }
+
+    @Transaction
+    public void transfer(int fromId, int toId, BigDecimal money) {
+        Account account1 = getById(fromId);
+        Account account2 = getById(toId);
+        account1.setMoney(account1.getMoney().subtract(new BigDecimal(200)));
+        account2.setMoney(account2.getMoney().add(new BigDecimal(200)));
+        update(account1);
+        int i=1/0;
+        update(account2);
     }
 }

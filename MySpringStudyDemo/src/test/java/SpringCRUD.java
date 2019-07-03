@@ -3,9 +3,11 @@
  * @Date: 2019/7/2 14:51
  */
 
+import com.study.dao.utils.ConnectionUtils;
 import com.study.domain.Account;
 import com.study.proxy.CompanyService;
 import com.study.proxy.ICompany;
+import com.study.proxy.ServiceProxtFactory;
 import com.study.proxy.StaticProxyService;
 import com.study.service.IAccountService;
 import org.junit.Test;
@@ -18,6 +20,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.math.BigDecimal;
+import java.sql.Connection;
 import java.util.List;
 
 /**
@@ -30,8 +33,14 @@ public class SpringCRUD {
     @Autowired
     private IAccountService accountService = null;
 
+    @Autowired
+    private ConnectionUtils utils = null;
+    @Autowired
+    private ServiceProxtFactory<IAccountService> accountServiceServiceProxtFactory;
+
     @Test
     public void findAll() {
+        Connection connection = utils.getConnection();
         List<Account> all = accountService.findAll();
         System.out.println(all);
     }
@@ -65,9 +74,10 @@ public class SpringCRUD {
         //company 这里的company是代理的目标  没有目标类没有办法代理
         ICompany o = (ICompany) Proxy.newProxyInstance(ICompany.class.getClassLoader(), new Class[]{ICompany.class}, new InvocationHandler() {
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                if ("toString".equals(method.getName())) {
-                return "toString";
-                }
+                //proxy.toString();
+//                if ("toString".equals(method.getName())) {
+//                return "toString";
+//                }
 
                 if ("sale".equals(method.getName())) {
                     double money = (Double) args[0];
@@ -76,6 +86,22 @@ public class SpringCRUD {
                 return null;
             }
         });
-        o.sale(1000);
+        //o.sale(1000);
+        o.toString();
+    }
+
+    @Test
+    public void transfer() {
+        //没有事务支持
+//        Account a1 = accountService.getById(1);
+//        Account a2 = accountService.getById(2);
+//        a1.setMoney(a1.getMoney().subtract(new BigDecimal(200)));
+//        a2.setMoney(a2.getMoney().add(new BigDecimal(200)));
+//        accountService.update(a1);
+//        //模拟异常
+//        int i=1/0;
+//        accountService.update(a2);
+        accountServiceServiceProxtFactory.setService(accountService);
+        accountServiceServiceProxtFactory.getService().transfer(1, 2, new BigDecimal(200));
     }
 }

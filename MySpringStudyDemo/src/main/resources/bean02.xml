@@ -16,18 +16,12 @@
 
     <!--配置数据源-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-    <property name="driverClassName" value="${db.driver}"></property>
-    <property name="url" value="${db.url}"></property>
-    <property name="username" value="${db.username}"></property>
-    <property name="password" value="${db.password}"></property>
+        <property name="driverClassName" value="${db.driver}"></property>
+        <property name="url" value="${db.url}"></property>
+        <property name="username" value="${db.username}"></property>
+        <property name="password" value="${db.password}"></property>
     </bean>
-    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
-        <!--&lt;!&ndash;连接数据库的必备信息&ndash;&gt;-->
-        <!--<property name="driverClass" value="com.mysql.jdbc.Driver"></property>-->
-        <!--<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/eesy"></property>-->
-        <!--<property name="user" value="root"></property>-->
-        <!--<property name="password" value="1234"></property>-->
-    <!--</bean>-->
+
     <!--配置dbUtils-->
     <bean id="runner" class="org.apache.commons.dbutils.QueryRunner">
         <constructor-arg name="ds" ref="dataSource"></constructor-arg>

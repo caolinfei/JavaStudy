@@ -1,6 +1,7 @@
 package com.study.dao.impl;
 
 import com.study.dao.IAccountDao;
+import com.study.dao.utils.ConnectionUtils;
 import com.study.domain.Account;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.ResultSetHandler;
@@ -18,25 +19,27 @@ import java.util.List;
 public class AccountDao implements IAccountDao {
     @Autowired
     private QueryRunner runner;
+    @Autowired
+    private ConnectionUtils connectionUtils;
 
     public List<Account> findAll() throws SQLException {
-        return  runner.query("select * from account",new BeanListHandler<Account>(Account.class));
+        return  runner.query(connectionUtils.getConnection(),"select * from account",new BeanListHandler<Account>(Account.class));
 
     }
     public Account getById(Integer id) throws SQLException {
-        return  runner.query("select * from account where id=?",new BeanHandler<Account>(Account.class),id);
+        return  runner.query(connectionUtils.getConnection(),"select * from account where id=?",new BeanHandler<Account>(Account.class),id);
 
     }
 
     public Integer insert(Account account) throws SQLException {
-        return  runner.update("insert into account (name,money) Values(?,?)",
+        return  runner.update(connectionUtils.getConnection(),"insert into account (name,money) Values(?,?)",
                 account.getName(),
                 account.getMoney());
 
     }
 
     public Integer update(Account account) throws SQLException {
-        return  runner.update("update account set name=?,money=? where id=?",
+        return  runner.update(connectionUtils.getConnection(),"update account set name=?,money=? where id=?",
                 account.getName(),
                 account.getMoney(),
                 account.getId());
