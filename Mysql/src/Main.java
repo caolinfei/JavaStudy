@@ -22,6 +22,10 @@ public class Main {
      */
     public static void main(String[] args) {
 
+        
+        
+        String ss=".123";
+        double v = Double.parseDouble(ss);
         try {
 
            // Class.forName("com.mysql.jdbc.Driver");
