@@ -30,7 +30,7 @@
 
     -->
     <!--第一种方法 service-->
-    <bean id="accountService"
+    <bean   id="accountService"
           class="com.study.MyAccountServiceImpl"
           p:age="18" p:name="张三p" p:brithday-ref="now"
     >
