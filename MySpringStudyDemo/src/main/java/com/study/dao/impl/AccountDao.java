@@ -33,8 +33,8 @@ public class AccountDao implements IAccountDao {
 
     }
     public Account getById(Integer id) throws SQLException {
-//        return  runner.query(connectionUtils.getConnection(),"select * from account where id=?",new BeanHandler<Account>(Account.class),id);
-        return  runner.query(DataSourceUtils.getConnection(dataSource),"select * from account where id=?",new BeanHandler<Account>(Account.class),id);
+        return  runner.query(connectionUtils.getConnection(),"select * from account where id=?",new BeanHandler<Account>(Account.class),id);
+//        return  runner.query(DataSourceUtils.getConnection(dataSource),"select * from account where id=?",new BeanHandler<Account>(Account.class),id);
 
     }
 
@@ -49,14 +49,15 @@ public class AccountDao implements IAccountDao {
     }
 
     public Integer update(Account account) throws SQLException {
-//        return  runner.update(connectionUtils.getConnection(),"update account set name=?,money=? where id=?",
-//                account.getName(),
-//                account.getMoney(),
-//                account.getId());
-        return  runner.update(DataSourceUtils.getConnection(dataSource),"update account set name=?,money=? where id=?",
+        return  runner.update(connectionUtils.getConnection(),"update account set name=?,money=? where id=?",
                 account.getName(),
                 account.getMoney(),
                 account.getId());
+        //个人认为Spring的事务管理释放连接也是通过DataSourceUtils这个类
+//        return  runner.update(DataSourceUtils.getConnection(dataSource),"update account set name=?,money=? where id=?",
+//                account.getName(),
+//                account.getMoney(),
+//                account.getId());
 
     }
 }

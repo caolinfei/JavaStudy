@@ -17,4 +17,5 @@ public interface IAccountService {
     Integer inster(Account account);
 
     void transfer(int fromId, int toId, BigDecimal money);
+    void transfer2() ;
 }

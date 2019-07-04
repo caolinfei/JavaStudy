@@ -29,33 +29,25 @@ public class ServiceProxtFactory<TService> {
 
     public TService getService() {
         return (TService) Proxy.newProxyInstance(service.getClass().getClassLoader(), service.getClass().getInterfaces(), new InvocationHandler() {
+            @Override
             public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                Method[] declaredMethods = service.getClass().getDeclaredMethods();
-                for (Method declaredMethod : declaredMethods) {
-                    if (declaredMethod.getName().equals(method.getName()) ) {
-                        if (declaredMethod.getAnnotation(Transaction.class) != null) {
-                            try {
-                                transactionManage.beignTranscation();
-                                Object result = method.invoke(service, args);
-                                transactionManage.commit();
-                                return  result;
-                            } catch (Exception e) {
-                                transactionManage.rollback();
-                                throw new RuntimeException(e);
 
-                            } finally {
+                try {
+                    transactionManage.beignTranscation();
+                    Object result = method.invoke(service, args);
+                    transactionManage.commit();
+                    return  result;
+                } catch (Exception e) {
+                    transactionManage.rollback();
+                    throw new RuntimeException(e);
 
-                                transactionManage.close();
-                            }
+                } finally {
 
-                        }
-                    }
+                    System.out.println("finally");
+                    transactionManage.close();
                 }
-
-                return method.invoke(service, args);
             }
         });
-        //transactionManage.beignTranscation();
-
     }
 }
+

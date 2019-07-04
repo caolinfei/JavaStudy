@@ -3,6 +3,7 @@ package com.study.service.impl;
 import com.study.annotation.Transaction;
 import com.study.dao.IAccountDao;
 import com.study.dao.utils.ConnectionUtils;
+import com.study.dao.utils.TransactionManage;
 import com.study.domain.Account;
 import com.study.service.IAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +52,8 @@ public class AccountService implements IAccountService {
     @Autowired
     private IAccountDao accountDao;
 
+    @Autowired
+    private TransactionManage transactionManage;
     @PreDestroy
     public void preDestroy() {
         System.out.println("对象释放");
@@ -98,7 +101,7 @@ public class AccountService implements IAccountService {
         return 0;
     }
 
-    //@Transaction
+    @Transaction
     public void transfer(int fromId, int toId, BigDecimal money) {
         System.out.println("transfer执行");
         Account account1 = getById(fromId);
@@ -108,5 +111,26 @@ public class AccountService implements IAccountService {
         update(account1);
         //int i=1/0;
         update(account2);
+    }
+
+    public void transfer2() {
+        System.out.println("transfer2执行");
+        try {
+            transactionManage.beignTranscation();
+            Account account1 = getById(1);
+            Account account2 = getById(2);
+            account1.setMoney(account1.getMoney().subtract(new BigDecimal(200)));
+            account2.setMoney(account2.getMoney().add(new BigDecimal(200)));
+            update(account1);
+            //int i=1/0;
+            update(account2);
+            transactionManage.commit();
+        }catch (Exception e){
+            transactionManage.rollback();
+            throw  new RuntimeException(e);
+        }finally {
+            transactionManage.close();
+        }
+
     }
 }

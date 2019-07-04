@@ -26,20 +26,20 @@
         <property name="url" value="${db.url}"></property>
         <property name="username" value="${db.username}"></property>
         <property name="password" value="${db.password}"></property>
-        <property name="filters" value="stat" />
+        <property name="filters" value="stat"/>
 
-        <property name="maxActive" value="${jdbc.maxActive}" /><!-- 连接池最大使用连接数量 -->
-        <property name="initialSize" value="${jdbc.initialSize}" /><!--
+        <property name="maxActive" value="${jdbc.maxActive}"/><!-- 连接池最大使用连接数量 -->
+        <property name="initialSize" value="${jdbc.initialSize}"/><!--
 			初始化大小 -->
 
-        <property name="maxWait" value="${jdbc.maxWait}" /> <!-- 获取连接最大等待时间 -->
+        <property name="maxWait" value="${jdbc.maxWait}"/> <!-- 获取连接最大等待时间 -->
 
         <!-- <property name="maxIdle" value="${jdbc.maxIdle}" /> --> <!-- 连接池最大空闲 -->
-        <property name="minIdle" value="${jdbc.minIdle}" /><!-- 连接池最小空闲 -->
+        <property name="minIdle" value="${jdbc.minIdle}"/><!-- 连接池最小空闲 -->
 
-        <property name="timeBetweenEvictionRunsMillis" value="3000" /><!--
+        <property name="timeBetweenEvictionRunsMillis" value="3000"/><!--
 			逐出连接的检测时间间隔 -->
-        <property name="minEvictableIdleTimeMillis" value="300000" /><!--
+        <property name="minEvictableIdleTimeMillis" value="300000"/><!--
 			最小逐出时间 -->
     </bean>
 
@@ -52,11 +52,11 @@
     <context:component-scan base-package="com.study"></context:component-scan>
     <!--配置AOP 自定义的事务管理器事务管理器-->
     <!--<aop:config>-->
-        <!--<aop:aspect id="transaction" ref="transactionManage">-->
-            <!--<aop:around-->
-                    <!--method="around"-->
-                    <!--pointcut="execution(* com.study.service.impl.*.*(..))" ></aop:around>-->
-        <!--</aop:aspect>-->
+    <!--<aop:aspect id="transaction" ref="transactionManage">-->
+    <!--<aop:around-->
+    <!--method="around"-->
+    <!--pointcut="execution(* com.study.service.impl.*.*(..))" ></aop:around>-->
+    <!--</aop:aspect>-->
 
     <!--</aop:config>-->
 
@@ -76,15 +76,15 @@
                 no-rollback-for：用于指定一个异常，当产生该异常时，事务不回滚，产生其他异常时事务回滚。没有默认值。表示任何异常都回滚。
         -->
         <tx:attributes>
-        <tx:method name="*" propagation="REQUIRED" read-only="false"/>
-        <!--<tx:method name="find*" propagation="SUPPORTS" read-only="true"></tx:method>-->
-    </tx:attributes>
+            <tx:method name="*" propagation="REQUIRED" read-only="false"/>
+            <!--<tx:method name="find*" propagation="SUPPORTS" read-only="true"></tx:method>-->
+        </tx:attributes>
     </tx:advice>
     <!-- 配置aop-->
-    <aop:config>
-        <!-- 配置切入点表达式-->
-        <aop:pointcut id="pt1" expression="execution(* com.study.service.impl.*.*(..)))"></aop:pointcut>
-        <!--建立切入点表达式和事务通知的对应关系 -->
-        <aop:advisor advice-ref="txAdvice" pointcut-ref="pt1"></aop:advisor>
-    </aop:config>
+    <!--<aop:config>-->
+        <!--&lt;!&ndash; 配置切入点表达式&ndash;&gt;-->
+        <!--<aop:pointcut id="pt1" expression="execution(* com.study.service.impl.*.*(..)))"></aop:pointcut>-->
+        <!--&lt;!&ndash;建立切入点表达式和事务通知的对应关系 &ndash;&gt;-->
+        <!--<aop:advisor advice-ref="txAdvice" pointcut-ref="pt1"></aop:advisor>-->
+    <!--</aop:config>-->
 </beans>

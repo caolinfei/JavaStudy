@@ -39,6 +39,7 @@ public class ConnectionUtils {
     }
 
     public void removeConnection() {
+        System.out.println("remove");
         localConnection.remove();
     }
 }

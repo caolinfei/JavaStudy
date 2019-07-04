@@ -53,10 +53,14 @@ public class TransactionManage {
      */
     public void close() {
         try {
+            System.out.println("释放连接");
             //dataSource 关闭连接 还回连接池
             connectionUtils.getConnection().close();
-            //
-            ;
+            //这里如果不释放的话 会空指针异常
+            //Connection 连接池对象内部封装了一个Jdbc4Connection对象 连接数据就是这个,
+            //所以当ThreadLocal不进行Remove的时候 Connection存在 但是内部的Jdbc4Connection
+            connectionUtils.removeConnection();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -65,7 +69,7 @@ public class TransactionManage {
 
     public Object around(ProceedingJoinPoint proceedingJoinPoint) {
 
-        System.out.println("执行了环绕通知");
+
         Object result = null;
         try {
             beignTranscation();
