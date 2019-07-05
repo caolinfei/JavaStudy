@@ -1,0 +1,53 @@
+2019-07-02 13:18:23,992 0      [           main] INFO         com.mchange.v2.log.MLog  - MLog clients using log4j logging.
+2019-07-02 13:18:27,041 3049   [           main] INFO  m.mchange.v2.c3p0.C3P0Registry  - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2019-07-02 13:18:27,103 3111   [           main] DEBUG icPooledDataSourceManagerMBean  - MBean: com.mchange.v2.c3p0:type=PooledDataSource[2vsft5a31d576g91ljc3j5|4034c28c] registered.
+2019-07-02 14:03:34,898 0      [           main] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-03 17:54:55,795 1      [           main] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-03 17:56:06,850 0      [pool-1-thread-3] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-03 17:56:54,349 0      [pool-1-thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-03 17:58:45,789 0      [pool-1-thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-03 18:00:57,313 0      [ol-1-thread-805] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-03 18:07:51,488 0      [pool-1-thread-9] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-03 18:09:24,219 0      [pool-1-thread-3] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-03 18:10:07,146 0      [pool-1-thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:06:37,975 0      [pool-1-thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:08:13,296 0      [pool-1-thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:08:40,325 0      [pool-1-thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:10:17,398 0      [pool-1-thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:18:05,802 0      [pool-1-thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:18:38,733 1      [pool-1-thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:22:02,675 0      [pool-1-thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:27:07,706 0      [pool-1-thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:28:15,711 0      [pool-1-thread-3] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:29:37,017 0      [pool-1-thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:31:17,214 0      [pool-1-thread-6] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:32:23,485 0      [pool-1-thread-6] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:32:54,080 30595  [pool-1-thread-2] WARN  aba.druid.pool.DruidDataSource  - not full timeout retry : 1
+2019-07-04 09:32:54,084 30599  [ool-1-thread-10] WARN  aba.druid.pool.DruidDataSource  - not full timeout retry : 1
+2019-07-04 09:32:54,084 30599  [pool-1-thread-4] WARN  aba.druid.pool.DruidDataSource  - not full timeout retry : 1
+2019-07-04 09:32:54,083 30598  [pool-1-thread-7] WARN  aba.druid.pool.DruidDataSource  - not full timeout retry : 1
+2019-07-04 09:32:54,082 30597  [pool-1-thread-6] WARN  aba.druid.pool.DruidDataSource  - not full timeout retry : 1
+2019-07-04 09:32:54,080 30595  [pool-1-thread-9] WARN  aba.druid.pool.DruidDataSource  - not full timeout retry : 1
+2019-07-04 09:32:54,081 30596  [pool-1-thread-8] WARN  aba.druid.pool.DruidDataSource  - not full timeout retry : 1
+2019-07-04 09:35:29,793 0      [           main] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:39:39,332 0      [           main] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:41:03,236 0      [pool-1-thread-2] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:42:37,048 0      [pool-1-thread-3] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:43:52,829 0      [pool-1-thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:44:32,722 0      [pool-1-thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:48:38,153 0      [pool-1-thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:53:20,783 0      [       Thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:54:40,879 0      [       Thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:58:27,075 0      [       Thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 09:59:09,371 0      [       Thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 10:00:28,543 1      [       Thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 10:00:57,991 0      [       Thread-2] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 10:02:11,953 0      [       Thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 10:07:09,799 0      [       Thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 10:08:54,231 0      [       Thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 10:12:57,871 0      [       Thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 10:18:03,816 0      [       Thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 10:20:14,812 0      [       Thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 10:21:51,551 0      [pool-1-thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 10:24:19,098 0      [pool-1-thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
+2019-07-04 10:35:06,931 0      [pool-1-thread-1] INFO  aba.druid.pool.DruidDataSource  - {dataSource-1} inited
