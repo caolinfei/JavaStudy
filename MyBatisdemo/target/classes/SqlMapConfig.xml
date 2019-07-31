@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties>
+        <property name="drive" value="com.mysql.jdbc.Driver"></property>
+    </properties>
+    <settings>
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
+    <typeAliases>
+        <!--<typeAlias type="com.study.domian.User" alias="user"></typeAlias>
+        <typeAlias type="com.study.domian.UserQuery" alias="userQuery"></typeAlias>-->
+        <package name="com.study.domian"></package>
+    </typeAliases>
+
+
+    <!-- 配置 mybatis 的环境 -->
+    <environments default="mysql">
+        <!-- 配置 mysql 的环境 -->
+        <environment id="mysql">
+            <!-- 配置事务的类型 -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- 配置连接数据库的信息：用的是数据源(连接池) -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${drive}"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/db3"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- 告知 mybatis 映射配置的位置 -->
+    <mappers>
+        <!--<mapper resource="com/study/dao/IUserMapper.xml"/>-->
+        <!--<mapper class="com.study.dao.IUserDao"></mapper>-->
+        <!--<mapper class="com.study.dao.IPersonDao"></mapper>-->
+       <!--<package name="com.study.dao"></package> 讨巧的方式 mybatis 默认会寻找当前包下的 dao接口
+            如果没有加注解就不注册 如果在resource下有与mybatis dao路径一直的xml配置文件会默认被使用
+       -->
+        <package name="com.study.dao"></package>
+    </mappers>
+
+</configuration>
